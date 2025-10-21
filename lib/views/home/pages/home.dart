@@ -1,10 +1,11 @@
 import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:cosmetics/core/ui/search_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final List<Map<String, dynamic>> products = [
+  final List products = [
     {
       'name': 'Athe Red lipstick',
       'price': 350,
@@ -51,9 +52,9 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 13),
           child: Column(
             children: [
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
               SearchInput(hintText: 'Search'),
-              SizedBox(height: 13),
+              SizedBox(height: 13.h),
               ClipRRect(
                 borderRadius: BorderRadiusGeometry.circular(20),
                 child: Stack(
@@ -110,14 +111,14 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Top rated products',
                   style: TextStyle(
                     color: Color(0xff434C6D),
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -157,7 +158,7 @@ class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
       elevation: 3,
       color: Color(0xffD9D9D9),
       clipBehavior: Clip.hardEdge,
@@ -168,7 +169,7 @@ class _Item extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(4),
+                borderRadius: BorderRadiusGeometry.circular(4.r),
                 child: AppAssets(
                   imageUrl: product['image'],
                   fit: BoxFit.contain,
@@ -183,16 +184,16 @@ class _Item extends StatelessWidget {
               children: [
                 Text(
                   product['name'],
-                  style: const TextStyle(
-                    fontSize: 14,
+                  style: TextStyle(
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: 4.h),
                 Text(
                   '\$ ${product['price']} ',
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey[700],
                   ),

@@ -3,6 +3,7 @@ import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyView extends StatelessWidget {
@@ -18,19 +19,19 @@ class VerifyView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppAssets(imageUrl: 'splash_image.svg', height: 67, width: 62),
-            SizedBox(height: 40),
+            AppAssets(imageUrl: 'splash_image.svg', height: 67.h, width: 62.w),
+            SizedBox(height: 40.h),
             Text(
               'Verify Code',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Text(
               textAlign: TextAlign.center,
               'We just sent a 4-digit verification code to +20 1022658997. Enter the code in the box below to continue.',
-              style: TextStyle(fontSize: 15, color: Colors.grey),
+              style: TextStyle(fontSize: 15.sp, color: Colors.grey),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Align(
               alignment: Alignment.centerLeft,
               child: TextButton(
@@ -39,14 +40,13 @@ class VerifyView extends StatelessWidget {
                   'Edit the number',
                   style: TextStyle(
                     color: Color(0xffD75D72),
-                    fontSize: 13,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-
-            SizedBox(height: 20),
+            SizedBox(height: 20.h),
             PinCodeTextField(
               appContext: context,
               length: 4,
@@ -55,9 +55,9 @@ class VerifyView extends StatelessWidget {
               animationType: AnimationType.fade,
               pinTheme: PinTheme(
                 shape: PinCodeFieldShape.box,
-                borderRadius: BorderRadius.circular(12),
-                fieldHeight: 55,
-                fieldWidth: 50,
+                borderRadius: BorderRadius.circular(12.r),
+                fieldHeight: 55.h,
+                fieldWidth: 50.w,
                 activeColor: Colors.blue,
                 selectedColor: Colors.pink,
                 inactiveColor: Colors.grey,
@@ -66,9 +66,7 @@ class VerifyView extends StatelessWidget {
                 // pinCode = value;
               },
             ),
-
-            SizedBox(height: 50),
-
+            SizedBox(height: 50.h),
             CustomFilledButton(
               onPressed: () {
                 // if (formKey.currentState!.validate()) {}
@@ -79,8 +77,8 @@ class VerifyView extends StatelessWidget {
                     return AlertDialog(
                       icon: AppAssets(
                         imageUrl: 'verfiy_logo.png',
-                        height: 100,
-                        width: 100,
+                        height: 100.h,
+                        width: 100.w,
                       ),
                       title: Text('Account Activated!'),
                       content: Text(
@@ -91,8 +89,8 @@ class VerifyView extends StatelessWidget {
                       actions: [
                         Center(
                           child: CustomFilledButton(
-                            height: 60,
-                            width: 268,
+                            height: 60.h,
+                            width: 268.w,
                             text: 'Go to home',
                             onPressed: () {
                               goTo(HomeView());
@@ -107,10 +105,10 @@ class VerifyView extends StatelessWidget {
               },
               text: 'Done',
               color: Color(0xffD75D72),
-              height: 60,
-              width: 268,
+              height: 60.h,
+              width: 268.w,
             ),
-            SizedBox(height: 43),
+            SizedBox(height: 43.h),
           ],
         ),
       ),

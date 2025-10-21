@@ -6,6 +6,7 @@ import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:cosmetics/views/auth/register.dart';
 import 'package:cosmetics/views/auth/reset_password.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -32,18 +33,18 @@ class _LoginViewState extends State<LoginView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppAssets(imageUrl: 'login_img.png'),
-              SizedBox(height: 24),
+              SizedBox(height: 24.h),
               Text(
                 'Login Now',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 14),
+              SizedBox(height: 14.h),
               Text(
                 textAlign: TextAlign.center,
                 'Please enter the details below to continue',
-                style: TextStyle(fontSize: 15, color: Colors.grey),
+                style: TextStyle(fontSize: 15.sp, color: Colors.grey),
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 25.h),
               Row(
                 children: [
                   CustomDropDownWidget(
@@ -54,7 +55,7 @@ class _LoginViewState extends State<LoginView> {
                       return null;
                     },
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Flexible(
                     flex: 4,
                     child: AppInput(
@@ -72,7 +73,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
-              SizedBox(height: 18),
+              SizedBox(height: 18.h),
 
               AppInput(
                 hintText: 'Your Password',
@@ -96,23 +97,23 @@ class _LoginViewState extends State<LoginView> {
                     'Forget Password?',
                     style: TextStyle(
                       color: Color(0xffD75D72),
-                      fontSize: 13,
+                      fontSize: 13.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 43),
+              SizedBox(height: 43.h),
               CustomFilledButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {}
                 },
                 text: 'Login',
                 color: Color(0xffD75D72),
-                height: 60,
-                width: 268,
+                height: 60.h,
+                width: 268.w,
               ),
-              SizedBox(height: 43),
+              SizedBox(height: 43.h),
               Text.rich(
                 TextSpan(
                   children: [

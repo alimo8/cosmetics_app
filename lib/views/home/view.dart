@@ -15,14 +15,14 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
 
-  final List<Widget> screens = [
+  final List screens = [
     HomePage(),
     const CategoriesPage(),
     const CartPage(),
-    const PersonalPages.PersonalPage(),
+    const PersonalPages(),
   ];
 
-  final List<String> icons = [
+  final List icons = [
     'home_icon.svg',
     'categories_icon.svg',
     'cart_icon.svg',
@@ -33,48 +33,47 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
-
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.only(bottom: 16, left: 12, right: 12),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        margin: EdgeInsets.symmetric(horizontal: 13),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.horizontal(
-            left: Radius.circular(25),
-            right: Radius.circular(25),
-          ),
+          color: Color(0xffD9D9D9),
+          borderRadius: BorderRadius.circular(25),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
-              blurRadius: 8,
-              offset: const Offset(0, 3),
+              offset: Offset(4, 4),
+              blurRadius: 4,
+              spreadRadius: 0,
+              blurStyle: BlurStyle.outer,
+              color: Colors.black.withValues(alpha: 1),
             ),
           ],
         ),
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(icons.length, (index) {
-            final bool isSelected = index == currentIndex;
-
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 250),
-                curve: Curves.easeInOut,
-                padding: const EdgeInsets.all(10),
-                child: AppAssets(
-                  imageUrl: icons[index],
-                  width: 28,
-                  height: 28,
-                  color: isSelected ? const Color(0xffD75D72) : Colors.grey,
-                ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: (value) {
+            setState(() {
+              currentIndex = value;
+            });
+          },
+          currentIndex: currentIndex,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          items: List.generate(
+            screens.length,
+            (index) => BottomNavigationBarItem(
+              icon: AppAssets(
+                imageUrl: icons[index],
+                color: currentIndex == index
+                    ? Theme.of(context).primaryColor
+                    : null,
               ),
-            );
-          }),
+              label: '',
+            ),
+          ),
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:cosmetics/core/ui/search_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});
@@ -10,16 +11,8 @@ class CategoriesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-
         backgroundColor: Colors.transparent,
-        title: Text(
-          'Categories',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff434C6D),
-          ),
-        ),
+        title: Text('Categories'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
@@ -27,7 +20,7 @@ class CategoriesPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SearchInput(hintText: 'Search'),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -57,16 +50,16 @@ class _Item extends StatelessWidget {
           child: AppAssets(
             imageUrl:
                 'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-            width: 80,
-            height: 80,
+            width: 80.w,
+            height: 80.h,
           ),
         ),
-        const SizedBox(width: 12),
-        const Expanded(
+        SizedBox(width: 12.w),
+        Expanded(
           child: Text(
             'Category Name',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w600,
               color: Color(0xff434C6D),
             ),
@@ -76,8 +69,8 @@ class _Item extends StatelessWidget {
           onPressed: () {},
           icon: AppAssets(
             imageUrl: 'arrow-right_icon.svg',
-            width: 24,
-            height: 24,
+            width: 24.w,
+            height: 24.h,
           ),
         ),
       ],

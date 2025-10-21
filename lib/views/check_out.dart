@@ -1,6 +1,7 @@
 import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckOutView extends StatelessWidget {
   const CheckOutView({super.key});
@@ -13,12 +14,11 @@ class CheckOutView extends StatelessWidget {
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios, color: Color(0xff434C6D)),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text(
+
+        title: Text(
           'Checkout',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 24.sp,
             fontWeight: FontWeight.bold,
             color: Color(0xff434C6D),
           ),
@@ -37,17 +37,15 @@ class CheckOutView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ===== Delivery Section =====
-              const Text(
+              Text(
                 'Delivery to',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                   color: Color(0xff434C6D),
                 ),
               ),
-              const SizedBox(height: 16),
-
+              SizedBox(height: 16.h),
               const CustomContainer(
                 image:
                     'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
@@ -55,29 +53,24 @@ class CheckOutView extends StatelessWidget {
                 subTitle: 'Mansoura, 14 Porsaid St',
                 icon: 'arrowright2_icon.svg',
               ),
-
-              const SizedBox(height: 40),
-
-              // ===== Payment Section =====
-              const Text(
+              SizedBox(height: 40.h),
+              Text(
                 'Payment Method',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                   color: Color(0xff434C6D),
                 ),
               ),
-              const SizedBox(height: 16),
-
-              const CustomContainer(
+              SizedBox(height: 16.h),
+              CustomContainer(
                 image: 'masterCard_icon.svg',
                 title: '**** **** **** 1234',
                 icon: 'arrowright2_icon.svg',
-                width: 40,
-                height: 40,
+                width: 40.w,
+                height: 40.h,
               ),
-              const SizedBox(height: 12),
-
+              SizedBox(height: 12.h),
               CustomContainer(
                 image: 'voucher_icon.svg',
                 title: 'Add voucher',
@@ -86,81 +79,75 @@ class CheckOutView extends StatelessWidget {
                   text: 'Apply',
                   color: Color(0xffDA498C),
                 ),
-                width: 40,
-                height: 40,
+                width: 40.w,
+                height: 40.h,
               ),
 
-              const SizedBox(height: 40),
-
-              // ===== Payment Summary =====
-              const Text(
+              SizedBox(height: 40.h),
+              Text(
                 '- REVIEW PAYMENT',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   color: Color(0xff6D6E8D),
                   letterSpacing: 1,
                 ),
               ),
-              const SizedBox(height: 6),
-              const Text(
+              SizedBox(height: 6.h),
+              Text(
                 'PAYMENT SUMMARY',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff434C6D),
                   letterSpacing: 1,
                 ),
               ),
-              const SizedBox(height: 22),
-
+              SizedBox(height: 22.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     'Subtotal',
-                    style: TextStyle(fontSize: 14, color: Color(0xff434C6D)),
+                    style: TextStyle(fontSize: 14.sp, color: Color(0xff434C6D)),
                   ),
                   Text(
                     '16.100 EGP',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       color: Color(0xff434C6D),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-
+              SizedBox(height: 10.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     'Shipping Fees',
-                    style: TextStyle(fontSize: 14, color: Color(0xff434C6D)),
+                    style: TextStyle(fontSize: 14.sp, color: Color(0xff434C6D)),
                   ),
                   Text(
                     'TO BE CALCULATED',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       color: Color(0xff434C6D),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
-
+              SizedBox(height: 16.h),
               const Divider(color: Color(0xffA5C9CA), thickness: 1),
-              const SizedBox(height: 16),
-
+              SizedBox(height: 16.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     'TOTAL + VAT',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff434C6D),
                     ),
@@ -168,23 +155,21 @@ class CheckOutView extends StatelessWidget {
                   Text(
                     '16.100 EGP',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff434C6D),
                     ),
                   ),
                 ],
               ),
-
-              const SizedBox(height: 80),
-
+              SizedBox(height: 80.h),
               Center(
                 child: CustomFilledButton(
                   onPressed: () {},
                   text: 'ORDER',
                   color: Color(0xffDA498C),
-                  width: 233,
-                  height: 58,
+                  width: 233.w,
+                  height: 58.h,
                 ),
               ),
             ],
@@ -220,28 +205,28 @@ class CustomContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.grey, width: 1),
+        borderRadius: BorderRadius.circular(20.r),
+        border: Border.all(color: Colors.grey, width: 1.w),
       ),
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
             child: AppAssets(
               imageUrl: image ?? '',
               width: width ?? 80,
               height: height ?? 60,
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title ?? '',
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                     color: Color(0xff434C6D),
                   ),

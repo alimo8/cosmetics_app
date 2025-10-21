@@ -3,6 +3,7 @@ import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -24,30 +25,29 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppAssets(
-              imageUrl: onBoardingList[currentIndex].imageUrl,
-              height: 200,
-              width: 200,
+              imageUrl: _list[currentIndex].imageUrl,
+              height: 200.h,
+              width: 200.w,
             ),
-            SizedBox(height: 28),
+            SizedBox(height: 28.h),
             Text(
-              onBoardingList[currentIndex].title,
+              _list[currentIndex].title,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Text(
-              onBoardingList[currentIndex].descreption,
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              _list[currentIndex].descreption,
+              style: TextStyle(fontSize: 18.sp, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 80),
+            SizedBox(height: 80.h),
             currentIndex != 2
                 ? Center(
                     child: FloatingActionButton(
                       backgroundColor: Color(0xff434C6D),
                       onPressed: () {
                         currentIndex++;
-
                         setState(() {});
                       },
                       child: AppAssets(imageUrl: 'click.svg'),
@@ -79,7 +79,7 @@ class _Model {
   });
 }
 
-final onBoardingList = [
+final _list = [
   _Model(
     imageUrl: 'boarding_1.png',
     title: 'WELCOME!',

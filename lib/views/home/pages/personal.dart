@@ -1,50 +1,51 @@
 import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PersonalPages extends StatelessWidget {
-  const PersonalPages.PersonalPage({super.key});
+  const PersonalPages({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 13.0),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 150),
-            ClipOval(
-              child: AppAssets(
-                imageUrl:
-                    'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-                width: 100,
-                height: 100,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 13.0),
+          child: Column(
+            children: [
+              SizedBox(height: 120.h),
+              ClipOval(
+                child: AppAssets(
+                  imageUrl:
+                      'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
+                  width: 100.w,
+                  height: 100.h,
+                ),
               ),
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Ali Mohamed',
-              style: TextStyle(
-                fontSize: 16,
-                color: Color(0xff434C6D),
-                fontWeight: FontWeight.w600,
+              SizedBox(height: 16.h),
+              Text(
+                'Ali Mohamed',
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: Color(0xff434C6D),
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            SizedBox(height: 16),
-
-            ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-
-              children: [
-                _Item(urlIcon: 'Carrier_icon.svg', title: 'Edit Info'),
-                _Item(urlIcon: 'Vector_icon.svg', title: 'Order History'),
-                _Item(urlIcon: 'wallet_icon.svg', title: 'Wallet'),
-                _Item(urlIcon: 'setting_icon.svg', title: 'Settings'),
-                _Item(urlIcon: 'Vector_icon.svg', title: 'Voucher '),
-              ],
-            ),
-          ],
+              SizedBox(height: 16.h),
+              ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                children: [
+                  _Item(urlIcon: 'Carrier_icon.svg', title: 'Edit Info'),
+                  _Item(urlIcon: 'Vector_icon.svg', title: 'Order History'),
+                  _Item(urlIcon: 'wallet_icon.svg', title: 'Wallet'),
+                  _Item(urlIcon: 'setting_icon.svg', title: 'Settings'),
+                  _Item(urlIcon: 'Vector_icon.svg', title: 'Voucher '),
+                ],
+              ),
+              SizedBox(height: 160.h),
+            ],
+          ),
         ),
       ),
     );

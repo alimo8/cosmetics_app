@@ -3,6 +3,7 @@ import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/custom_drop_down_widget.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -29,13 +30,17 @@ class _RegisterViewState extends State<RegisterView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppAssets(imageUrl: 'splash_image.svg', height: 67, width: 62),
-              SizedBox(height: 40),
+              AppAssets(
+                imageUrl: 'splash_image.svg',
+                height: 67.h,
+                width: 62.w,
+              ),
+              SizedBox(height: 40.h),
               Text(
                 'Create account',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 50.h),
 
               AppInput(
                 hintText: 'Enter Your Name',
@@ -48,7 +53,7 @@ class _RegisterViewState extends State<RegisterView> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Row(
                 children: [
                   CustomDropDownWidget(
@@ -59,7 +64,7 @@ class _RegisterViewState extends State<RegisterView> {
                       return null;
                     },
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Flexible(
                     flex: 4,
                     child: AppInput(
@@ -76,7 +81,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               AppInput(
                 hintText: 'Enter Your Password',
@@ -104,7 +109,7 @@ class _RegisterViewState extends State<RegisterView> {
                   return null;
                 },
               ),
-              SizedBox(height: 90),
+              SizedBox(height: 90.h),
 
               CustomFilledButton(
                 onPressed: () {
@@ -115,7 +120,7 @@ class _RegisterViewState extends State<RegisterView> {
                 height: 60,
                 width: 268,
               ),
-              SizedBox(height: 43),
+              SizedBox(height: 43.h),
 
               Text.rich(
                 TextSpan(
@@ -123,7 +128,6 @@ class _RegisterViewState extends State<RegisterView> {
                     TextSpan(
                       text: 'Have an account?',
                       style: TextStyle(color: Colors.grey),
-                      children: [],
                     ),
                     WidgetSpan(
                       alignment: PlaceholderAlignment.middle,
@@ -140,7 +144,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ],
                 ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
             ],
           ),
         ),

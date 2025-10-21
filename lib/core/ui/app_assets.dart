@@ -22,7 +22,7 @@ class AppAssets extends StatelessWidget {
       return SvgPicture.asset(
         errorBuilder: (context, error, stackTrace) =>
             Icon(Icons.error_outline, color: Colors.red),
-        'assets/images/$imageUrl',
+        'assets/icons/$imageUrl',
         height: height,
         width: width,
         fit: fit ?? BoxFit.contain,

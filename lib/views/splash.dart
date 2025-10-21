@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:cosmetics/core/logic/helper_methods.dart';
+import 'package:cosmetics/core/ui/app_assets.dart';
 import 'package:cosmetics/views/on_boarding.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -29,17 +29,13 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              'assets/images/splash_image.svg',
-              width: 150,
-              height: 150,
+            AppAssets(
+              imageUrl: 'splash_image.svg',
+              width: 150.w,
+              height: 150.h,
             ),
-            SizedBox(height: 18),
-            SvgPicture.asset(
-              'assets/images/text_spalsh.svg',
-              width: 50,
-              height: 50,
-            ),
+            SizedBox(height: 18.h),
+            AppAssets(imageUrl: 'text_spalsh.svg', width: 50.w, height: 50.h),
           ],
         ),
       ),
