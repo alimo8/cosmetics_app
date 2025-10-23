@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
-            home: HomeView(),
+            home: SplashView(),
           );
         },
       ),
