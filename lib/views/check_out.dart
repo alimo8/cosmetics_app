@@ -1,5 +1,5 @@
-import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/core/ui/custom_filled_button.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
+import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class CheckOutView extends StatelessWidget {
           },
           icon: CircleAvatar(
             backgroundColor: Color(0xff101010).withValues(alpha: .1),
-            child: AppImages(imageUrl: 'arrow_back.svg'),
+            child: AppImage(imageUrl: 'arrow_back.svg'),
           ),
         ),
 
@@ -79,7 +79,7 @@ class CheckOutView extends StatelessWidget {
               CustomContainer(
                 image: 'voucher.svg',
                 title: 'Add voucher',
-                widget: CustomFilledButton(
+                widget: AppButton(
                   onPressed: () {},
                   text: 'Apply',
                   color: Color(0xffDA498C),
@@ -169,7 +169,7 @@ class CheckOutView extends StatelessWidget {
               ),
               SizedBox(height: 80.h),
               Center(
-                child: CustomFilledButton(
+                child: AppButton(
                   onPressed: () {},
                   text: 'ORDER',
                   color: Color(0xffDA498C),
@@ -217,7 +217,7 @@ class CustomContainer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
-            child: AppImages(
+            child: AppImage(
               imageUrl: image ?? '',
               width: width ?? 80,
               height: height ?? 60,
@@ -253,7 +253,7 @@ class CustomContainer extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: widget == null
-                ? AppImages(imageUrl: icon ?? '', width: 24, height: 24)
+                ? AppImage(imageUrl: icon ?? '', width: 24, height: 24)
                 : widget!,
           ),
         ],

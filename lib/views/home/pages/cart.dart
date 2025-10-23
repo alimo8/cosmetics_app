@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/views/check_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +19,7 @@ class CartPage extends StatelessWidget {
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: AppImages(imageUrl: 'bink_cart.svg'),
+              child: AppImage(imageUrl: 'bink_cart.svg'),
             ),
           ),
         ],
@@ -75,7 +75,7 @@ class _ItemState extends State<_Item> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadiusGeometry.circular(18),
-                child: AppImages(
+                child: AppImage(
                   imageUrl:
                       'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
                   width: 110.w,

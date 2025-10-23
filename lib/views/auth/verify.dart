@@ -1,6 +1,6 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/core/ui/custom_filled_button.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
+import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +19,7 @@ class VerifyView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppImages(imageUrl: 'splash.svg', height: 67.h, width: 62.w),
+            AppImage(imageUrl: 'splash.svg', height: 67.h, width: 62.w),
             SizedBox(height: 40.h),
             Text(
               'Verify Code',
@@ -67,7 +67,7 @@ class VerifyView extends StatelessWidget {
               },
             ),
             SizedBox(height: 50.h),
-            CustomFilledButton(
+            AppButton(
               onPressed: () {
                 // if (formKey.currentState!.validate()) {}
                 // goTo(CreatePasswordView());
@@ -75,8 +75,8 @@ class VerifyView extends StatelessWidget {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                      icon: AppImages(
-                        imageUrl: 'verfiy_logo.png',
+                      icon: AppImage(
+                        imageUrl: 'verify.json',
                         height: 100.h,
                         width: 100.w,
                       ),
@@ -88,7 +88,7 @@ class VerifyView extends StatelessWidget {
                       ),
                       actions: [
                         Center(
-                          child: CustomFilledButton(
+                          child: AppButton(
                             height: 60.h,
                             width: 268.w,
                             text: 'Go to home',

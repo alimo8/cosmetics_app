@@ -1,9 +1,9 @@
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PersonalPages extends StatelessWidget {
-  const PersonalPages({super.key});
+class PersonalPage extends StatelessWidget {
+  const PersonalPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class PersonalPages extends StatelessWidget {
             children: [
               SizedBox(height: 120.h),
               ClipOval(
-                child: AppImages(
+                child: AppImage(
                   imageUrl:
                       'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
                   width: 100.w,
@@ -63,7 +63,7 @@ class _Item extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          AppImages(imageUrl: urlIcon, width: 18, height: 18),
+          AppImage(imageUrl: urlIcon, width: 18, height: 18),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
@@ -77,7 +77,7 @@ class _Item extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: AppImages(imageUrl: 'arrow_right.svg', width: 24, height: 24),
+            icon: AppImage(imageUrl: 'arrow_right.svg', width: 24, height: 24),
           ),
         ],
       ),

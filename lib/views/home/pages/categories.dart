@@ -1,4 +1,4 @@
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +47,7 @@ class _Item extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(8),
-          child: AppImages(
+          child: AppImage(
             imageUrl:
                 'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
             width: 80.w,
@@ -67,7 +67,7 @@ class _Item extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {},
-          icon: AppImages(
+          icon: AppImage(
             imageUrl: 'arrow_right.svg',
             width: 24.w,
             height: 24.h,

@@ -1,8 +1,8 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
-import 'package:cosmetics/core/ui/custom_drop_down_widget.dart';
-import 'package:cosmetics/core/ui/custom_filled_button.dart';
+import 'package:cosmetics/core/ui/app_drop_down.dart';
+import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/auth/register.dart';
 import 'package:cosmetics/views/auth/reset_password.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppImages(imageUrl: 'login.png'),
+              AppImage(imageUrl: 'login.png'),
               SizedBox(height: 24.h),
               Text(
                 'Login Now',
@@ -47,7 +47,7 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(height: 25.h),
               Row(
                 children: [
-                  CustomDropDownWidget(
+                  AppDropDown(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please select a country code';
@@ -104,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               SizedBox(height: 43.h),
-              CustomFilledButton(
+              AppButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {}
                 },

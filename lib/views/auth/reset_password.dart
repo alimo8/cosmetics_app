@@ -1,8 +1,8 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
-import 'package:cosmetics/core/ui/custom_drop_down_widget.dart';
-import 'package:cosmetics/core/ui/custom_filled_button.dart';
+import 'package:cosmetics/core/ui/app_drop_down.dart';
+import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/auth/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +30,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppImages(imageUrl: 'splash.svg', width: 67.w, height: 70.h),
+              AppImage(imageUrl: 'splash.svg', width: 67.w, height: 70.h),
               SizedBox(height: 24.h),
               Text(
                 'Reset password',
@@ -45,7 +45,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               SizedBox(height: 100.h),
               Row(
                 children: [
-                  CustomDropDownWidget(
+                  AppDropDown(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please select a country code';
@@ -73,7 +73,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               ),
 
               SizedBox(height: 43.h),
-              CustomFilledButton(
+              AppButton(
                 onPressed: () {
                   goTo(VerifyView());
 

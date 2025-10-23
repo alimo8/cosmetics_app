@@ -1,4 +1,4 @@
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: [
-                    AppImages(
+                    AppImage(
                       imageUrl:
                           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
                     ),
@@ -87,14 +87,14 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              AppImages(imageUrl: 'offer.svg'),
+                              AppImage(imageUrl: 'offer.svg'),
                             ],
                           ),
                           SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              AppImages(imageUrl: 'offer.svg'),
+                              AppImage(imageUrl: 'offer.svg'),
                               Text(
                                 'Hurry up! \nSkin care only !',
                                 style: TextStyle(
@@ -169,7 +169,7 @@ class _Item extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4.r),
-                child: AppImages(imageUrl: product.image, fit: BoxFit.contain),
+                child: AppImage(imageUrl: product.image, fit: BoxFit.contain),
               ),
             ),
           ),

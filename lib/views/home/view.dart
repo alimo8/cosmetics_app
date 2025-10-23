@@ -1,4 +1,4 @@
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/views/home/pages/cart.dart';
 import 'package:cosmetics/views/home/pages/categories.dart';
 import 'package:cosmetics/views/home/pages/home.dart';
@@ -18,7 +18,7 @@ class _HomeViewState extends State<HomeView> {
     _model(icons: 'home.svg', pages: HomePage()),
     _model(icons: 'categories.svg', pages: const CategoriesPage()),
     _model(icons: 'cart.svg', pages: const CartPage()),
-    _model(icons: 'profile.svg', pages: const PersonalPages()),
+    _model(icons: 'profile.svg', pages: const PersonalPage()),
   ];
 
   @override
@@ -57,7 +57,7 @@ class _HomeViewState extends State<HomeView> {
           items: List.generate(
             _list.length,
             (index) => BottomNavigationBarItem(
-              icon: AppImages(
+              icon: AppImage(
                 imageUrl: _list[index].icons!,
                 color: currentIndex == index
                     ? Theme.of(context).primaryColor

@@ -1,52 +1,7 @@
-// import 'package:flutter/material.dart';
-
-// class CustomDropDownWidget extends StatelessWidget {
-//   CustomDropDownWidget({super.key, this.validator});
-
-//   final List<String> countryCodes = ['+20', '+999', '+966', '+44'];
-//   final FormFieldValidator<String>? validator;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       width: 76,
-//       child: DropdownButtonFormField<String>(
-//         validator: validator,
-
-//         hint: FittedBox(
-//           fit: BoxFit.scaleDown,
-//           child: Text(
-//             countryCodes.first,
-//             style: const TextStyle(color: Colors.grey),
-//           ),
-//         ),
-//         decoration: InputDecoration(
-//           contentPadding: const EdgeInsets.symmetric(
-//             horizontal: 10,
-//             vertical: 8,
-//           ),
-//           border: OutlineInputBorder(
-//             borderRadius: BorderRadius.circular(8),
-//             borderSide: const BorderSide(color: Colors.grey, width: 1),
-//           ),
-//         ),
-//         borderRadius: BorderRadius.circular(8),
-//         iconSize: 10,
-//         items: countryCodes.map((code) {
-//           return DropdownMenuItem<String>(value: code, child: Text(code));
-//         }).toList(),
-//         icon: const Icon(Icons.arrow_drop_down, size: 9.9),
-
-//         onChanged: (String? value) {},
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 
-class CustomDropDownWidget extends StatelessWidget {
-  const CustomDropDownWidget({
+class AppDropDown extends StatelessWidget {
+  const AppDropDown({
     super.key,
     this.validator,
     this.onChanged,

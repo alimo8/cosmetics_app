@@ -1,5 +1,4 @@
-import 'package:cosmetics/core/ui/app_images.dart';
-import 'package:cosmetics/core/ui/app_search.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -51,11 +50,11 @@ class _AppInputState extends State<AppInput> {
                   setState(() {});
                 },
                 icon: isShown
-                    ? AppImages(imageUrl: 'eye_off.svg')
-                    : AppImages(imageUrl: 'eye_on.svg'),
+                    ? AppImage(imageUrl: 'eye_off.svg')
+                    : AppImage(imageUrl: 'eye_on.svg'),
                 //  Icon(isShown ? AppImages(imageUrl: imageUrl) : Icons.visibility),
               )
-            : AppImages(
+            : AppImage(
                 imageUrl: 'search.svg',
                 fit: BoxFit.scaleDown,
                 width: 18.w,
@@ -64,9 +63,6 @@ class _AppInputState extends State<AppInput> {
         enabledBorder: border,
         focusedBorder: border,
         errorBorder: border,
-        // : OutlineInputBorder(
-        //     borderRadius: BorderRadius.circular(widget.radius!),
-        //   ),
       ),
     );
   }

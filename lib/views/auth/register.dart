@@ -1,7 +1,7 @@
-import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
-import 'package:cosmetics/core/ui/custom_drop_down_widget.dart';
-import 'package:cosmetics/core/ui/custom_filled_button.dart';
+import 'package:cosmetics/core/ui/app_drop_down.dart';
+import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppImages(imageUrl: 'splash.svg', height: 67.h, width: 62.w),
+              AppImage(imageUrl: 'splash.svg', height: 67.h, width: 62.w),
               SizedBox(height: 40.h),
               Text(
                 'Create account',
@@ -52,7 +52,7 @@ class _RegisterViewState extends State<RegisterView> {
               SizedBox(height: 16.h),
               Row(
                 children: [
-                  CustomDropDownWidget(
+                  AppDropDown(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please select a country code';
@@ -107,7 +107,7 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               SizedBox(height: 90.h),
 
-              CustomFilledButton(
+              AppButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {}
                 },
