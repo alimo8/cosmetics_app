@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/custom_drop_down_widget.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppAssets(imageUrl: 'login_img.png'),
+              AppImages(imageUrl: 'login.png'),
               SizedBox(height: 24.h),
               Text(
                 'Login Now',

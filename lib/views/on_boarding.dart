@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:cosmetics/views/auth/login.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            AppAssets(
+            AppImages(
               imageUrl: _list[currentIndex].imageUrl,
               height: 200.h,
               width: 200.w,
@@ -50,7 +50,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         currentIndex++;
                         setState(() {});
                       },
-                      child: AppAssets(imageUrl: 'click.svg'),
+                      child: AppImages(imageUrl: 'click.svg'),
                     ),
                   )
                 : CustomFilledButton(
@@ -81,19 +81,19 @@ class _Model {
 
 final _list = [
   _Model(
-    imageUrl: 'boarding_1.png',
+    imageUrl: 'on_boarding_1.png',
     title: 'WELCOME!',
     descreption:
         'Makeup has the power to transform your mood and empowers you to be a more confident person.',
   ),
   _Model(
-    imageUrl: 'boarding_2.png',
+    imageUrl: 'on_boarding_2.png',
     title: 'SEARCH & PICK',
     descreption:
         'We have dedicated set of products and routines hand picked for every skin type.',
   ),
   _Model(
-    imageUrl: 'boarding_3.png',
+    imageUrl: 'on_boarding_3.png',
     title: 'PUCH NOTIFICATIONS ',
     descreption: 'Allow notifications for new makeup & cosmetics offers.',
   ),

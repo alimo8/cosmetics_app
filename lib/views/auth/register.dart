@@ -1,4 +1,4 @@
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/custom_drop_down_widget.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
@@ -30,11 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppAssets(
-                imageUrl: 'splash_image.svg',
-                height: 67.h,
-                width: 62.w,
-              ),
+              AppImages(imageUrl: 'splash.svg', height: 67.h, width: 62.w),
               SizedBox(height: 40.h),
               Text(
                 'Create account',

@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:cosmetics/views/auth/register.dart';
@@ -30,11 +30,7 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppAssets(
-                imageUrl: 'splash_image.svg',
-                width: 67.w,
-                height: 70.h,
-              ),
+              AppImages(imageUrl: 'splash.svg', width: 67.w, height: 70.h),
               SizedBox(height: 24.h),
               Text(
                 'Create Password',

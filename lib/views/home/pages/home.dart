@@ -1,47 +1,48 @@
-import 'package:cosmetics/core/ui/app_assets.dart';
-import 'package:cosmetics/core/ui/search_input.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final List products = [
-    {
-      'name': 'Athe Red lipstick',
-      'price': 350,
-      'image':
+
+  final List<ProductModel> products = [
+    ProductModel(
+      name: 'Athe Red lipstick',
+      price: 350,
+      image:
           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-    },
-    {
-      'name': 'Athe Red lipstick',
-      'price': 120,
-      'image':
+    ),
+    ProductModel(
+      name: 'Athe Red lipstick',
+      price: 120,
+      image:
           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-    },
-    {
-      'name': 'Athe Red lipstick',
-      'price': 90,
-      'image':
+    ),
+    ProductModel(
+      name: 'Athe Red lipstick',
+      price: 90,
+      image:
           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-    },
-    {
-      'name': 'Athe Red lipstick',
-      'price': 150,
-      'image':
+    ),
+    ProductModel(
+      name: 'Athe Red lipstick',
+      price: 150,
+      image:
           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-    },
-    {
-      'name': 'Athe Red lipstick',
-      'price': 75,
-      'image':
+    ),
+    ProductModel(
+      name: 'Athe Red lipstick',
+      price: 75,
+      image:
           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-    },
-    {
-      'name': 'Athe Red lipstick',
-      'price': 220,
-      'image':
+    ),
+    ProductModel(
+      name: 'Athe Red lipstick',
+      price: 220,
+      image:
           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-    },
+    ),
   ];
 
   @override
@@ -53,18 +54,16 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 30.h),
-              SearchInput(hintText: 'Search'),
+              AppSearch(hintText: 'Search'),
               SizedBox(height: 13.h),
               ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(20),
+                borderRadius: BorderRadius.circular(20),
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: [
-                    AppAssets(
+                    AppImages(
                       imageUrl:
                           'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
-                      // width: 100,
-                      // height: 100,
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
@@ -72,7 +71,7 @@ class HomePage extends StatelessWidget {
                         vertical: 18,
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xffE9DCD3).withValues(alpha: .8),
+                        color: const Color(0xffE9DCD3).withValues(alpha: .8),
                       ),
                       child: Column(
                         children: [
@@ -88,14 +87,14 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              AppAssets(imageUrl: 'offer_icon.svg'),
+                              AppImages(imageUrl: 'offer.svg'),
                             ],
                           ),
                           SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              AppAssets(imageUrl: 'offer_icon.svg'),
+                              AppImages(imageUrl: 'offer.svg'),
                               Text(
                                 'Hurry up! \nSkin care only !',
                                 style: TextStyle(
@@ -117,7 +116,7 @@ class HomePage extends StatelessWidget {
                 child: Text(
                   'Top rated products',
                   style: TextStyle(
-                    color: Color(0xff434C6D),
+                    color: const Color(0xff434C6D),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -127,11 +126,11 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: GridView.builder(
                   padding: EdgeInsets.zero,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: products.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, // عمودين
+                    crossAxisCount: 2,
                     crossAxisSpacing: 14,
                     mainAxisSpacing: 18,
                     childAspectRatio: 0.8,
@@ -142,6 +141,7 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
+              SizedBox(height: 100.h),
             ],
           ),
         ),
@@ -152,15 +152,14 @@ class HomePage extends StatelessWidget {
 
 class _Item extends StatelessWidget {
   const _Item({required this.product});
-
-  final Map<String, dynamic> product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
       elevation: 3,
-      color: Color(0xffD9D9D9),
+      color: const Color(0xffD9D9D9),
       clipBehavior: Clip.hardEdge,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -169,11 +168,8 @@ class _Item extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(4.r),
-                child: AppAssets(
-                  imageUrl: product['image'],
-                  fit: BoxFit.contain,
-                ),
+                borderRadius: BorderRadius.circular(4.r),
+                child: AppImages(imageUrl: product.image, fit: BoxFit.contain),
               ),
             ),
           ),
@@ -183,7 +179,7 @@ class _Item extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product['name'],
+                  product.name,
                   style: TextStyle(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.bold,
@@ -191,7 +187,7 @@ class _Item extends StatelessWidget {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  '\$ ${product['price']} ',
+                  '\$ ${product.price}',
                   style: TextStyle(
                     fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
@@ -205,4 +201,12 @@ class _Item extends StatelessWidget {
       ),
     );
   }
+}
+
+class ProductModel {
+  final String name;
+  final double price;
+  final String image;
+
+  ProductModel({required this.name, required this.price, required this.image});
 }

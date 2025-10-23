@@ -1,4 +1,6 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
+import 'package:cosmetics/views/check_out.dart';
+import 'package:cosmetics/views/home/view.dart';
 import 'package:cosmetics/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,10 +37,28 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 surfaceTintColor: Colors.transparent,
               ),
+              inputDecorationTheme: InputDecorationTheme(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey, width: 1),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey, width: 1),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.red, width: 1),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.red, width: 1),
+                ),
+              ),
             ),
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
-            home: SplashView(),
+            home: HomeView(),
           );
         },
       ),

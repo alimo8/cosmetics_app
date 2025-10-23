@@ -1,4 +1,7 @@
+import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppInput extends StatefulWidget {
   const AppInput({
@@ -10,6 +13,7 @@ class AppInput extends StatefulWidget {
     this.controller,
     this.validator,
     this.keyboardType,
+    this.radius,
   });
   final String? labelText;
   final String? hintText;
@@ -18,6 +22,7 @@ class AppInput extends StatefulWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final double? radius;
 
   @override
   State<AppInput> createState() => _AppInputState();
@@ -45,26 +50,32 @@ class _AppInputState extends State<AppInput> {
                   isShown = !isShown;
                   setState(() {});
                 },
-                icon: Icon(isShown ? Icons.visibility_off : Icons.visibility),
+                icon: isShown
+                    ? AppImages(imageUrl: 'eye_off.svg')
+                    : AppImages(imageUrl: 'eye_on.svg'),
+                //  Icon(isShown ? AppImages(imageUrl: imageUrl) : Icons.visibility),
               )
-            : null,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.grey, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.grey, width: 1),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.red, width: 1),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.red, width: 1),
-        ),
+            : AppImages(
+                imageUrl: 'search.svg',
+                fit: BoxFit.scaleDown,
+                width: 18.w,
+                height: 18.h,
+              ),
+        enabledBorder: border,
+        focusedBorder: border,
+        errorBorder: border,
+        // : OutlineInputBorder(
+        //     borderRadius: BorderRadius.circular(widget.radius!),
+        //   ),
       ),
+    );
+  }
+
+  OutlineInputBorder? get border {
+    if (widget.radius == null) return null;
+    return OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.circular(widget.radius!),
     );
   }
 }

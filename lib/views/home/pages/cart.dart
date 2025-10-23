@@ -1,4 +1,6 @@
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/logic/helper_methods.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/views/check_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,8 +11,18 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: const Text('My Cart'),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              goTo(CheckOutView());
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AppImages(imageUrl: 'bink_cart.svg'),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -63,7 +75,7 @@ class _ItemState extends State<_Item> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadiusGeometry.circular(18),
-                child: AppAssets(
+                child: AppImages(
                   imageUrl:
                       'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
                   width: 110.w,
@@ -116,8 +128,6 @@ class _ItemState extends State<_Item> {
                     ),
                   ),
                   Container(
-                    width: 142,
-                    height: 42,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade400),
                       borderRadius: BorderRadius.circular(10.r),

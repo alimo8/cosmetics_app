@@ -1,5 +1,5 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class VerifyView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppAssets(imageUrl: 'splash_image.svg', height: 67.h, width: 62.w),
+            AppImages(imageUrl: 'splash.svg', height: 67.h, width: 62.w),
             SizedBox(height: 40.h),
             Text(
               'Verify Code',
@@ -75,7 +75,7 @@ class VerifyView extends StatelessWidget {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                      icon: AppAssets(
+                      icon: AppImages(
                         imageUrl: 'verfiy_logo.png',
                         height: 100.h,
                         width: 100.w,
@@ -93,7 +93,7 @@ class VerifyView extends StatelessWidget {
                             width: 268.w,
                             text: 'Go to home',
                             onPressed: () {
-                              goTo(HomeView());
+                              goTo(HomeView(), canPop: false);
                             },
                             color: Color(0xffD75D72),
                           ),

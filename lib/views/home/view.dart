@@ -1,4 +1,4 @@
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/views/home/pages/cart.dart';
 import 'package:cosmetics/views/home/pages/categories.dart';
 import 'package:cosmetics/views/home/pages/home.dart';
@@ -14,25 +14,17 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
-
-  final List screens = [
-    HomePage(),
-    const CategoriesPage(),
-    const CartPage(),
-    const PersonalPages(),
-  ];
-
-  final List icons = [
-    'home_icon.svg',
-    'categories_icon.svg',
-    'cart_icon.svg',
-    'profile_icon.svg',
+  final _list = [
+    _model(icons: 'home.svg', pages: HomePage()),
+    _model(icons: 'categories.svg', pages: const CategoriesPage()),
+    _model(icons: 'cart.svg', pages: const CartPage()),
+    _model(icons: 'profile.svg', pages: const PersonalPages()),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      body: _list[currentIndex].pages,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         margin: EdgeInsets.symmetric(horizontal: 13),
@@ -63,10 +55,10 @@ class _HomeViewState extends State<HomeView> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           items: List.generate(
-            screens.length,
+            _list.length,
             (index) => BottomNavigationBarItem(
-              icon: AppAssets(
-                imageUrl: icons[index],
+              icon: AppImages(
+                imageUrl: _list[index].icons!,
                 color: currentIndex == index
                     ? Theme.of(context).primaryColor
                     : null,
@@ -78,4 +70,11 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
+}
+
+class _model {
+  final String? icons;
+  final Widget? pages;
+
+  _model({required this.icons, required this.pages});
 }

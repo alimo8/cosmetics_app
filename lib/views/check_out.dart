@@ -1,4 +1,4 @@
-import 'package:cosmetics/core/ui/app_assets.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
 import 'package:cosmetics/core/ui/custom_filled_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +11,13 @@ class CheckOutView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.arrow_back_ios, color: Color(0xff434C6D)),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: CircleAvatar(
+            backgroundColor: Color(0xff101010).withValues(alpha: .1),
+            child: AppImages(imageUrl: 'arrow_back.svg'),
+          ),
         ),
 
         title: Text(
@@ -51,7 +56,7 @@ class CheckOutView extends StatelessWidget {
                     'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
                 title: 'Home',
                 subTitle: 'Mansoura, 14 Porsaid St',
-                icon: 'arrowright2_icon.svg',
+                icon: 'arrow_down.svg',
               ),
               SizedBox(height: 40.h),
               Text(
@@ -64,15 +69,15 @@ class CheckOutView extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               CustomContainer(
-                image: 'masterCard_icon.svg',
+                image: 'masterCard.svg',
                 title: '**** **** **** 1234',
-                icon: 'arrowright2_icon.svg',
+                icon: 'arrow_down.svg',
                 width: 40.w,
                 height: 40.h,
               ),
               SizedBox(height: 12.h),
               CustomContainer(
-                image: 'voucher_icon.svg',
+                image: 'voucher.svg',
                 title: 'Add voucher',
                 widget: CustomFilledButton(
                   onPressed: () {},
@@ -212,7 +217,7 @@ class CustomContainer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
-            child: AppAssets(
+            child: AppImages(
               imageUrl: image ?? '',
               width: width ?? 80,
               height: height ?? 60,
@@ -248,7 +253,7 @@ class CustomContainer extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: widget == null
-                ? AppAssets(imageUrl: icon ?? '', width: 24, height: 24)
+                ? AppImages(imageUrl: icon ?? '', width: 24, height: 24)
                 : widget!,
           ),
         ],

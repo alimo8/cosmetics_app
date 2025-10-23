@@ -1,5 +1,5 @@
-import 'package:cosmetics/core/ui/app_assets.dart';
-import 'package:cosmetics/core/ui/search_input.dart';
+import 'package:cosmetics/core/ui/app_images.dart';
+import 'package:cosmetics/core/ui/app_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +19,7 @@ class CategoriesPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SearchInput(hintText: 'Search'),
+            const AppSearch(hintText: 'Search'),
             SizedBox(height: 30.h),
             ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
@@ -47,7 +47,7 @@ class _Item extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(8),
-          child: AppAssets(
+          child: AppImages(
             imageUrl:
                 'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
             width: 80.w,
@@ -67,8 +67,8 @@ class _Item extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {},
-          icon: AppAssets(
-            imageUrl: 'arrow-right_icon.svg',
+          icon: AppImages(
+            imageUrl: 'arrow_right.svg',
             width: 24.w,
             height: 24.h,
           ),
