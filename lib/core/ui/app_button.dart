@@ -21,6 +21,7 @@ class AppButton extends StatelessWidget {
       onPressed: onPressed,
       style: FilledButton.styleFrom(
         backgroundColor: color,
+        visualDensity: VisualDensity.compact,
         fixedSize: Size(
           width ?? double.infinity, // default: full width
           height ?? 55, // default: 55 height

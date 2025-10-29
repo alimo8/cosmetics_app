@@ -1,5 +1,6 @@
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
+import 'package:cosmetics/core/ui/google_map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,8 +53,7 @@ class CheckOutView extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               const CustomContainer(
-                image:
-                    'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
+                map: GoogleMapWidget(width: 60, height: 60),
                 title: 'Home',
                 subTitle: 'Mansoura, 14 Porsaid St',
                 icon: 'arrow_down.svg',
@@ -80,11 +80,13 @@ class CheckOutView extends StatelessWidget {
                 image: 'voucher.svg',
                 title: 'Add voucher',
                 widget: AppButton(
+                  height: 10.h,
+                  // width: 40.w,
                   onPressed: () {},
                   text: 'Apply',
                   color: Color(0xffDA498C),
                 ),
-                width: 40.w,
+                // width: 40.w,
                 height: 40.h,
               ),
 
@@ -195,8 +197,10 @@ class CustomContainer extends StatelessWidget {
     this.width,
     this.height,
     this.widget,
+    this.map,
   });
 
+  final Widget? map;
   final Widget? widget;
   final String? image;
   final String? title;
@@ -208,7 +212,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: Colors.grey, width: 1.w),
@@ -217,11 +221,13 @@ class CustomContainer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15.r),
-            child: AppImage(
-              imageUrl: image ?? '',
-              width: width ?? 80,
-              height: height ?? 60,
-            ),
+            child: map == null
+                ? AppImage(
+                    imageUrl: image ?? '',
+                    width: width ?? 80,
+                    height: height ?? 60,
+                  )
+                : map!,
           ),
           SizedBox(width: 12.w),
           Expanded(

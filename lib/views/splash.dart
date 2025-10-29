@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/views/on_boarding.dart';

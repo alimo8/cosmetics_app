@@ -15,10 +15,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
   final _list = [
-    _model(icons: 'home.svg', pages: HomePage()),
-    _model(icons: 'categories.svg', pages: const CategoriesPage()),
-    _model(icons: 'cart.svg', pages: const CartPage()),
-    _model(icons: 'profile.svg', pages: const PersonalPage()),
+    _Model(icons: 'home.svg', pages: HomePage()),
+    _Model(icons: 'categories.svg', pages: const CategoriesPage()),
+    _Model(icons: 'cart.svg', pages: const CartPage()),
+    _Model(icons: 'profile.svg', pages: const PersonalPage()),
   ];
 
   @override
@@ -72,9 +72,9 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class _model {
+class _Model {
   final String? icons;
   final Widget? pages;
 
-  _model({required this.icons, required this.pages});
+  _Model({required this.icons, required this.pages});
 }

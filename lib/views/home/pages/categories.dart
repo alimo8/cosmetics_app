@@ -1,10 +1,24 @@
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_search.dart';
+import 'package:cosmetics/views/home/cubit/category_cubit.dart';
+import 'package:cosmetics/views/home/model/category_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CategoriesPage extends StatelessWidget {
+class CategoriesPage extends StatefulWidget {
   const CategoriesPage({super.key});
+
+  @override
+  State<CategoriesPage> createState() => _CategoriesPageState();
+}
+
+class _CategoriesPageState extends State<CategoriesPage> {
+  @override
+  void initState() {
+    context.read<CategoryCubit>().getCategory();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,56 +26,76 @@ class CategoriesPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
-        title: Text('Categories'),
+        title: const Text('Categories'),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AppSearch(hintText: 'Search'),
-            SizedBox(height: 30.h),
-            ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: 10,
-              separatorBuilder: (context, index) =>
-                  const Divider(color: Colors.grey, thickness: 0.8, height: 40),
-              itemBuilder: (context, index) {
-                return _Item();
-              },
-            ),
-          ],
-        ),
+      body: BlocBuilder<CategoryCubit, CategoryState>(
+        builder: (context, state) {
+          if (state is CategoryLoading) {
+            return const Center(
+              child: CircularProgressIndicator(color: Colors.black),
+            );
+          } else if (state is CategoryErorr) {
+            return Center(child: Text('Error: ${state.errorMessage}'));
+          } else if (state is CategorySuccess) {
+            final categories = state.categories;
+            return SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const AppSearch(hintText: 'Search'),
+                  SizedBox(height: 30.h),
+                  ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: categories.length,
+                    separatorBuilder: (context, index) => const Divider(
+                      color: Colors.grey,
+                      thickness: 0.8,
+                      height: 40,
+                    ),
+                    itemBuilder: (context, index) {
+                      return _Item(categories[index]);
+                    },
+                  ),
+                  SizedBox(height: 100.h),
+                ],
+              ),
+            );
+          } else {
+            return const Center(child: Text('Something went wrong'));
+          }
+        },
       ),
     );
   }
 }
 
 class _Item extends StatelessWidget {
-  const _Item();
+  const _Item(this.categoryModel);
+  final CategoryModel categoryModel;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         ClipRRect(
-          borderRadius: BorderRadiusGeometry.circular(8),
+          borderRadius: BorderRadius.circular(8),
           child: AppImage(
-            imageUrl:
-                'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
+            imageUrl: categoryModel.image,
             width: 80.w,
             height: 80.h,
+            fit: BoxFit.cover,
           ),
         ),
         SizedBox(width: 12.w),
         Expanded(
           child: Text(
-            'Category Name',
+            categoryModel.name,
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: Color(0xff434C6D),
+              color: const Color(0xff434C6D),
             ),
           ),
         ),
