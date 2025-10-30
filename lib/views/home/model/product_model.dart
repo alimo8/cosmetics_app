@@ -1,18 +1,18 @@
-class MostOrderedModel {
+class ProductModel {
   final int id;
   final String image;
   final double price;
   final String title;
 
-  MostOrderedModel({
+  ProductModel({
     required this.id,
     required this.image,
     required this.price,
     required this.title,
   });
 
-  factory MostOrderedModel.fromJson(Map<String, dynamic> json) {
-    return MostOrderedModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
       id: json['id'] ?? 0,
       image: json['image'] ?? '',
       price: (json['price'] as num?)?.toDouble() ?? 0.0,

@@ -1,13 +1,14 @@
 import 'dart:developer';
+
 import 'package:cosmetics/core/networking/api_endpoints.dart';
 import 'package:cosmetics/core/networking/dio_helper.dart';
 import 'package:cosmetics/views/home/model/product_model.dart';
 
-class MostOrderedRepo {
-  Future<List<ProductModel>> getMost() async {
+class TopRatedRepo {
+  Future<List<ProductModel>> getTop() async {
     try {
       final response = await DioHelper.getRequest(
-        endPoint: ApiEndpoints.mostOrdered,
+        endPoint: ApiEndpoints.topRated,
       );
 
       final data = response.data;

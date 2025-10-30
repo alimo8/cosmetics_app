@@ -1,7 +1,7 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/networking/dio_helper.dart';
 import 'package:cosmetics/views/home/cubit/category_cubit.dart';
-import 'package:cosmetics/views/home/cubit/most_ordered_cubit.dart';
+import 'package:cosmetics/views/home/cubit/Product_cubit.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         builder: (context) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => MostOrderedCubit()),
+              BlocProvider(create: (context) => ProductCubit()),
               BlocProvider(create: (context) => CategoryCubit()),
             ],
             child: MaterialApp(
