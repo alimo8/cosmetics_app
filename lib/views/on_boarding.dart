@@ -17,50 +17,61 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AppImage(
-              imageUrl: _list[currentIndex].imageUrl,
-              height: 200.h,
-              width: 200.w,
-            ),
-            SizedBox(height: 28.h),
-            Text(
-              _list[currentIndex].title,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              _list[currentIndex].descreption,
-              style: TextStyle(fontSize: 18.sp, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 80.h),
-            currentIndex != 2
-                ? Center(
-                    child: FloatingActionButton(
-                      backgroundColor: Color(0xff434C6D),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(16.r),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: TextButton(
+                  onPressed: () {
+                    goTo(LoginView(), canPop: false);
+                  },
+                  child: Text('Skip'),
+                ),
+              ),
+              SizedBox(height: 40.h),
+              AppImage(
+                imageUrl: _list[currentIndex].imageUrl,
+                height: 200.h,
+                width: 200.w,
+              ),
+              SizedBox(height: 28.h),
+              Text(
+                _list[currentIndex].title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10.h),
+              Text(
+                _list[currentIndex].descreption,
+                style: TextStyle(fontSize: 18.sp, color: Colors.grey),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 40.h),
+              currentIndex != 2
+                  ? Center(
+                      child: FloatingActionButton(
+                        backgroundColor: Color(0xff434C6D),
+                        onPressed: () {
+                          currentIndex++;
+                          setState(() {});
+                        },
+                        child: AppImage(imageUrl: 'click.svg'),
+                      ),
+                    )
+                  : AppButton(
                       onPressed: () {
-                        currentIndex++;
-                        setState(() {});
+                        goTo(LoginView(), canPop: false);
                       },
-                      child: AppImage(imageUrl: 'click.svg'),
+                      text: 'let’s start!',
+                      color: Color(0xff434C6D),
                     ),
-                  )
-                : AppButton(
-                    onPressed: () {
-                      goTo(LoginView(), canPop: false);
-                    },
-                    text: 'let’s start!',
-                    color: Color(0xff434C6D),
-                  ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
+import 'package:cosmetics/core/ui/app_resend_otp.dart';
+import 'package:cosmetics/core/ui/app_verfiy_code.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,14 +28,30 @@ class VerifyView extends StatelessWidget {
               style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 40.h),
-            Text(
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'We just sent a 4-digit verification code to ',
+                  ),
+                  TextSpan(
+                    text: '\n+20 1022658997.',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' Enter the code in the box below to continue.',
+                  ),
+                ],
+              ),
               textAlign: TextAlign.center,
-              'We just sent a 4-digit verification code to +20 1022658997. Enter the code in the box below to continue.',
               style: TextStyle(fontSize: 15.sp, color: Colors.grey),
             ),
-            SizedBox(height: 40.h),
+            SizedBox(height: 20.h),
             Align(
-              alignment: Alignment.centerLeft,
+              alignment: AlignmentDirectional.centerStart,
               child: TextButton(
                 onPressed: () {},
                 child: Text(
@@ -47,25 +65,8 @@ class VerifyView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.h),
-            PinCodeTextField(
-              appContext: context,
-              length: 4,
-              cursorColor: Colors.black,
-              keyboardType: TextInputType.number,
-              animationType: AnimationType.fade,
-              pinTheme: PinTheme(
-                shape: PinCodeFieldShape.box,
-                borderRadius: BorderRadius.circular(12.r),
-                fieldHeight: 55.h,
-                fieldWidth: 50.w,
-                activeColor: Colors.blue,
-                selectedColor: Colors.pink,
-                inactiveColor: Colors.grey,
-              ),
-              onChanged: (value) {
-                // pinCode = value;
-              },
-            ),
+            AppVerfiyCode(),
+            AppResendOtp(),
             SizedBox(height: 50.h),
             AppButton(
               onPressed: () {

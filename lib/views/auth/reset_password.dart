@@ -1,4 +1,5 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
+import 'package:cosmetics/core/ui/app_back.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/app_drop_down.dart';
@@ -24,12 +25,12 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 40.0,
-          ).copyWith(top: 100),
+          padding: EdgeInsets.all(14).copyWith(top: 48),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AppBack(),
+              SizedBox(height: 40.h),
               AppImage(imageUrl: 'splash.svg', width: 67.w, height: 70.h),
               SizedBox(height: 24.h),
               Text(
@@ -76,9 +77,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               AppButton(
                 onPressed: () {
                   goTo(VerifyView());
-
-                  // if (formKey.currentState!.validate()) {
-                  // }
                 },
                 text: 'Login',
                 color: Color(0xffD75D72),

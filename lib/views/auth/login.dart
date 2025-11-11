@@ -27,8 +27,8 @@ class _LoginViewState extends State<LoginView> {
         key: formKey,
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(
-            horizontal: 40.0,
-          ).copyWith(top: 100),
+            horizontal: 30.0,
+          ).copyWith(top: 70),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -74,7 +74,6 @@ class _LoginViewState extends State<LoginView> {
                 ],
               ),
               SizedBox(height: 18.h),
-
               AppInput(
                 hintText: 'Your Password',
                 labelText: 'Enter Your Password',
@@ -103,7 +102,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
               ),
-              SizedBox(height: 43.h),
+              // SizedBox(height: 30.h),
               AppButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {}
