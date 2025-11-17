@@ -3,6 +3,7 @@ import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/auth/register.dart';
+import 'package:cosmetics/views/auth/success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,6 +18,7 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
   final formKey = GlobalKey<FormState>();
 
   final passwordController = TextEditingController();
+  final newPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
                 hintText: 'Your Password',
                 labelText: 'Enter Your Password',
                 isPassword: true,
-                controller: passwordController,
+                controller: newPasswordController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter value';
@@ -71,7 +73,13 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
               SizedBox(height: 70.h),
               AppButton(
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {}
+                  if (formKey.currentState!.validate()) {
+                    showDialog(
+                      context: context,
+                      builder: (context) =>
+                          SuccessDialog(isFormRegister: false),
+                    );
+                  }
                 },
                 text: 'Confirm',
                 color: Color(0xffD75D72),

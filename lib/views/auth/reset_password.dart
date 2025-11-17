@@ -76,7 +76,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               SizedBox(height: 43.h),
               AppButton(
                 onPressed: () {
-                  goTo(VerifyView());
+                  goTo(VerifyView(isFromRegister: false));
                 },
                 text: 'Login',
                 color: Color(0xffD75D72),

@@ -1,7 +1,9 @@
+import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/app_drop_down.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
+import 'package:cosmetics/views/auth/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -109,7 +111,9 @@ class _RegisterViewState extends State<RegisterView> {
 
               AppButton(
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {}
+                  if (formKey.currentState!.validate()) {
+                    goTo(VerifyView(isFromRegister: true));
+                  }
                 },
                 text: 'Next',
                 color: Color(0xffD75D72),

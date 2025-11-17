@@ -1,19 +1,27 @@
-import 'package:cosmetics/core/ui/app_input.dart';
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppSearch extends StatefulWidget {
+class AppSearch extends StatelessWidget {
   const AppSearch({super.key, this.hintText, this.controller});
   final String? hintText;
   final TextEditingController? controller;
-
-  @override
-  State<AppSearch> createState() => _AppSearchState();
-}
-
-class _AppSearchState extends State<AppSearch> {
   @override
   Widget build(BuildContext context) {
-    return AppInput(hintText: widget.hintText, radius: 25.r);
+    return TextFormField(
+      textInputAction: TextInputAction.next,
+      controller: controller,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+        labelStyle: TextStyle(color: Colors.grey),
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.grey),
+        suffixIcon: AppImage(
+          imageUrl: 'search.svg',
+          fit: BoxFit.scaleDown,
+          width: 18,
+          height: 18,
+        ),
+      ),
+    );
   }
 }

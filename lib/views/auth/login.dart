@@ -5,6 +5,7 @@ import 'package:cosmetics/core/ui/app_drop_down.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/auth/register.dart';
 import 'package:cosmetics/views/auth/reset_password.dart';
+import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -105,7 +106,9 @@ class _LoginViewState extends State<LoginView> {
               // SizedBox(height: 30.h),
               AppButton(
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {}
+                  if (formKey.currentState!.validate()) {
+                    goTo(HomeView(), canPop: false);
+                  }
                 },
                 text: 'Login',
                 color: Color(0xffD75D72),

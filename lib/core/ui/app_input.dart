@@ -1,6 +1,5 @@
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppInput extends StatefulWidget {
   const AppInput({
@@ -49,17 +48,10 @@ class _AppInputState extends State<AppInput> {
                   isShown = !isShown;
                   setState(() {});
                 },
-                icon: isShown
-                    ? AppImage(imageUrl: 'eye_off.svg')
-                    : AppImage(imageUrl: 'eye_on.svg'),
+                icon: AppImage(imageUrl: 'eye_${isShown ? "off" : "on"}.svg'),
                 //  Icon(isShown ? AppImages(imageUrl: imageUrl) : Icons.visibility),
               )
-            : AppImage(
-                imageUrl: 'search.svg',
-                fit: BoxFit.scaleDown,
-                width: 18.w,
-                height: 18.h,
-              ),
+            : null,
         enabledBorder: border,
         focusedBorder: border,
         errorBorder: border,
