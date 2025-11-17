@@ -3,6 +3,7 @@ import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/core/ui/app_resend_otp.dart';
 import 'package:cosmetics/core/ui/app_verfiy_code.dart';
+import 'package:cosmetics/core/ui/custom_arrow_back.dart';
 import 'package:cosmetics/views/auth/create_password.dart';
 import 'package:cosmetics/views/auth/success_dialog.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,9 @@ class VerifyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(leading: CustomArrowBack()),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 40.0,
-        ).copyWith(top: 100),
+        padding: EdgeInsets.symmetric(horizontal: 40.w).copyWith(top: 30.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

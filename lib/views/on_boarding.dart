@@ -15,6 +15,10 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   int currentIndex = 0;
 
+  goToLoginPage() {
+    goTo(LoginView(), canPop: false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,7 +32,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 alignment: AlignmentDirectional.centerEnd,
                 child: TextButton(
                   onPressed: () {
-                    goTo(LoginView(), canPop: false);
+                    goToLoginPage();
                   },
                   child: Text('Skip'),
                 ),
@@ -65,7 +69,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     )
                   : AppButton(
                       onPressed: () {
-                        goTo(LoginView(), canPop: false);
+                        goToLoginPage();
                       },
                       text: 'let’s start!',
                       color: Color(0xff434C6D),

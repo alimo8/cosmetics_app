@@ -18,31 +18,28 @@ class CartPage extends StatelessWidget {
               goTo(CheckOutView());
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.r),
               child: AppImage(imageUrl: 'bink_cart.svg'),
             ),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'You have 4 products in your cart',
-              style: TextStyle(fontSize: 12, color: Color(0xff434c6d)),
+              style: TextStyle(fontSize: 12.sp, color: Color(0xff434c6d)),
             ),
             SizedBox(height: 34.h),
             Expanded(
               child: ListView.separated(
                 cacheExtent: 500,
                 itemCount: 10,
-                separatorBuilder: (context, index) => const Divider(
-                  color: Colors.grey,
-                  thickness: 0.8,
-                  height: 40,
-                ),
+                separatorBuilder: (context, index) =>
+                    Divider(color: Colors.grey, thickness: 0.8, height: 40.h),
                 itemBuilder: (context, index) {
                   return const _Item();
                 },
@@ -74,7 +71,7 @@ class _ItemState extends State<_Item> {
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(18),
+                borderRadius: BorderRadiusGeometry.circular(18.r),
                 child: AppImage(
                   imageUrl:
                       'https://i.pinimg.com/736x/c7/72/34/c7723462882a41ebae4d3d6d874707d1.jpg',
@@ -83,11 +80,11 @@ class _ItemState extends State<_Item> {
                 ),
               ),
               Positioned(
-                right: 62,
-                bottom: 55,
+                right: 62.w,
+                bottom: 55.h,
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.delete, color: Colors.red, size: 20),
+                  icon: Icon(Icons.delete, color: Colors.red, size: 20.sp),
                 ),
               ),
             ],
@@ -138,7 +135,7 @@ class _ItemState extends State<_Item> {
                         IconButton(
                           icon: Icon(
                             Icons.remove,
-                            size: 18,
+                            size: 18.sp,
                             color: quantity > 1
                                 ? const Color(0xff434C6D)
                                 : Colors.grey.shade400,

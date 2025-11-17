@@ -32,8 +32,8 @@ class _AppResendOtpState extends State<AppResendOtp> {
               isSent = false;
               setState(() {});
             },
-            width: 50,
-            height: 40,
+            width: 50.w,
+            height: 40.h,
             duration: 30,
             fillColor: Colors.transparent,
             ringColor: Colors.transparent,

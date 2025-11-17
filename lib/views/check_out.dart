@@ -1,5 +1,6 @@
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
+import 'package:cosmetics/core/ui/custom_arrow_back.dart';
 import 'package:cosmetics/core/ui/google_map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,15 +12,7 @@ class CheckOutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: CircleAvatar(
-            backgroundColor: Color(0xff101010).withValues(alpha: .1),
-            child: AppImage(imageUrl: 'arrow_back.svg'),
-          ),
-        ),
+        leading: CustomArrowBack(),
 
         title: Text(
           'Checkout',
@@ -35,11 +28,11 @@ class CheckOutView extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(40)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40.r)),
           color: const Color(0xff39D3DA).withValues(alpha: .11),
         ),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -52,8 +45,8 @@ class CheckOutView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.h),
-              const CustomContainer(
-                map: GoogleMapWidget(width: 60, height: 60),
+              CustomContainer(
+                map: GoogleMapWidget(width: 60.w, height: 60.h),
                 title: 'Home',
                 subTitle: 'Mansoura, 14 Porsaid St',
                 icon: 'arrow_down.svg',
@@ -212,7 +205,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: Colors.grey, width: 1.w),
@@ -224,8 +217,8 @@ class CustomContainer extends StatelessWidget {
             child: map == null
                 ? AppImage(
                     imageUrl: image ?? '',
-                    width: width ?? 80,
-                    height: height ?? 60,
+                    width: width ?? 80.w,
+                    height: height ?? 60.h,
                   )
                 : map!,
           ),
@@ -244,11 +237,11 @@ class CustomContainer extends StatelessWidget {
                 ),
                 if (subTitle != null && subTitle!.isNotEmpty)
                   Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
+                    padding: EdgeInsets.only(top: 4.h),
                     child: Text(
                       subTitle!,
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: 14.sp,
                         color: Color(0xff8E8EA9),
                       ),
                     ),
@@ -259,7 +252,7 @@ class CustomContainer extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: widget == null
-                ? AppImage(imageUrl: icon ?? '', width: 24, height: 24)
+                ? AppImage(imageUrl: icon ?? '', width: 24, height: 24.h)
                 : widget!,
           ),
         ],

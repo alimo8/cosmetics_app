@@ -39,7 +39,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
           } else if (state is CategorySuccess) {
             final categories = state.categories;
             return SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -49,10 +49,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: categories.length,
-                    separatorBuilder: (context, index) => const Divider(
+                    separatorBuilder: (context, index) => Divider(
                       color: Colors.grey,
                       thickness: 0.8,
-                      height: 40,
+                      height: 40.h,
                     ),
                     itemBuilder: (context, index) {
                       return _Item(categories[index]);
@@ -80,7 +80,7 @@ class _Item extends StatelessWidget {
     return Row(
       children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
           child: AppImage(
             imageUrl: categoryModel.image,
             width: 80.w,

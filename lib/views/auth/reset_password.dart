@@ -25,7 +25,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(14).copyWith(top: 48),
+          padding: EdgeInsets.all(14.r).copyWith(top: 48.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

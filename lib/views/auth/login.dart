@@ -27,9 +27,7 @@ class _LoginViewState extends State<LoginView> {
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-          ).copyWith(top: 70),
+          padding: EdgeInsets.symmetric(horizontal: 30.w).copyWith(top: 70.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

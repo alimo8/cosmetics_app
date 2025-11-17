@@ -13,7 +13,7 @@ class AppButton extends StatelessWidget {
   final String text;
   final double? height;
   final double? width;
-  final void Function()? onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

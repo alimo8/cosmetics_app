@@ -41,7 +41,7 @@ class _MapSampleState extends State<GoogleMapWidget> {
   Future<void> loadMarker() async {
     // مثال لو حبيت تضيف أيقونة مخصصة:
     final Uint8List markerIcon = await getBytesFromAsset(
-      'assets/images/location-pin.png',
+      'assets/images/location_pin.png',
       40,
     );
 

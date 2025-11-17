@@ -10,7 +10,7 @@ class PersonalPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 13.0),
+          padding: EdgeInsets.symmetric(horizontal: 13.w),
           child: Column(
             children: [
               SizedBox(height: 120.h),
@@ -60,16 +60,16 @@ class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.r),
       child: Row(
         children: [
-          AppImage(imageUrl: urlIcon, width: 18, height: 18),
-          const SizedBox(width: 12),
+          AppImage(imageUrl: urlIcon, width: 18.w, height: 18.h),
+          SizedBox(width: 12.w),
           Expanded(
             child: Text(
               title,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 140.sp,
                 fontWeight: FontWeight.w600,
                 color: Color(0xff434C6D),
               ),
@@ -77,7 +77,11 @@ class _Item extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: AppImage(imageUrl: 'arrow_right.svg', width: 24, height: 24),
+            icon: AppImage(
+              imageUrl: 'arrow_right.svg',
+              width: 24.w,
+              height: 24.h,
+            ),
           ),
         ],
       ),

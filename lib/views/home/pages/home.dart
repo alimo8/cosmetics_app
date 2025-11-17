@@ -30,25 +30,25 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 13),
+          padding: EdgeInsets.symmetric(horizontal: 13.w),
           child: Column(
             children: [
               SizedBox(height: 15.h),
               const AppSearch(hintText: 'Search'),
               SizedBox(height: 13.h),
 
-              /// 🔹 Offers Section
+              ///  Offers Section
               _buildOffersSection(),
 
               SizedBox(height: 10.h),
 
-              /// 🔹 Top Rated Products
+              ///  Top Rated Products
               _buildSectionTitle('Top rated products'),
               _buildProductsGrid(),
 
               SizedBox(height: 10.h),
 
-              /// 🔹 Most Ordered Products
+              ///  Most Ordered Products
               _buildSectionTitle('Most ordered Products'),
               _buildProductsGrid(),
 
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  /// 🧩 Offers Section
+  ///  Offers Section
   Widget _buildOffersSection() {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
@@ -96,10 +96,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 18,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 18.h),
                 decoration: BoxDecoration(
                   color: const Color(0xffE9DCD3).withValues(alpha: .7),
                 ),
@@ -108,11 +105,11 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Expanded(
+                        Expanded(
                           child: Text(
                             '50% OFF DISCOUNT \nCUPON CODE : 125865',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -120,15 +117,15 @@ class _HomePageState extends State<HomePage> {
                         const AppImage(imageUrl: 'offer.svg'),
                       ],
                     ),
-                    const SizedBox(height: 10),
-                    const Row(
+                    SizedBox(height: 10.h),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppImage(imageUrl: 'offer.svg'),
                         Text(
                           'Hurry up! \nSkin care only !',
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -146,7 +143,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  /// 🧩 Section Title
+  ///  Section Title
   Widget _buildSectionTitle(String title) {
     return Align(
       alignment: Alignment.centerLeft,
@@ -161,7 +158,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  /// 🧩 Products Grid
+  ///  Products Grid
   Widget _buildProductsGrid() {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
@@ -195,7 +192,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-/// 🧩 Item Card
+///  Item Card
 class _Item extends StatelessWidget {
   const _Item({required this.product});
   final ProductModel product;
@@ -212,7 +209,7 @@ class _Item extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0.r),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4.r),
                 child: AppImage(imageUrl: product.image, fit: BoxFit.contain),
@@ -220,7 +217,7 @@ class _Item extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -249,7 +246,7 @@ class _Item extends StatelessWidget {
   }
 }
 
-/// 🔹 Loading Widget
+///  Loading Widget
 class _LoadingIndicator extends StatelessWidget {
   const _LoadingIndicator();
 
@@ -259,7 +256,7 @@ class _LoadingIndicator extends StatelessWidget {
   }
 }
 
-/// 🔹 Error Widget
+///  Error Widget
 class _ErrorMessage extends StatelessWidget {
   final String message;
   const _ErrorMessage(this.message);

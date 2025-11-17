@@ -26,9 +26,7 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 40.0,
-          ).copyWith(top: 100),
+          padding: EdgeInsets.symmetric(horizontal: 40.w).copyWith(top: 100.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

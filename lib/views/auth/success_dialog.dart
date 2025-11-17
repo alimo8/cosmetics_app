@@ -22,7 +22,7 @@ class _SuccessDialogState extends State<SuccessDialog> {
       backgroundColor: Color(0xffD9D9D9),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30.r)),
-        padding: EdgeInsets.all(8.0.r),
+        padding: EdgeInsets.all(8.r),
         width: 360.w,
         height: 343.h,
         child: Column(

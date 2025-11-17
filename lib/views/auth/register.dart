@@ -28,7 +28,7 @@ class _RegisterViewState extends State<RegisterView> {
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          padding: EdgeInsets.symmetric(horizontal: 40.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -93,7 +93,7 @@ class _RegisterViewState extends State<RegisterView> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
 
               AppInput(
                 hintText: 'Enter Your Password',

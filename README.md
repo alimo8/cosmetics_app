@@ -15,17 +15,26 @@ Cosmetics App is a modern Flutter application designed for beauty and cosmetics 
 - **Search:** Quickly find products using the search bar.
 - **Responsive Design:** Optimized for all screen sizes using `flutter_screenutil`.
 - **State Management:** Uses `flutter_bloc` for efficient state handling.
-- **Networking:** Fetches data from Firebase Realtime Database using Dio.
 
 ## Technologies Used
 
 - **Flutter**: UI toolkit for building natively compiled applications.
 - **Dart**: Programming language for Flutter.
-- **Firebase Realtime Database**: Backend for storing product and user data.
 - **Dio**: Powerful HTTP client for Dart/Flutter.
 - **Bloc**: State management library.
 - **Lottie**: For beautiful animations.
 - **Google Maps Flutter**: For location-based features.
+
+## Environment
+
+- **Flutter SDK:** `Flutter 3.32.9-0.0.pre.1` (stable channel)
+- **Dart SDK:** `3.8.1`
+
+To check your local versions run:
+
+```
+flutter --version
+```
 
 ## Project Structure
 
