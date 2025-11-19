@@ -1,7 +1,6 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
-import 'package:cosmetics/core/ui/app_drop_down.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/auth/register.dart';
 import 'package:cosmetics/views/auth/reset_password.dart';
@@ -44,33 +43,19 @@ class _LoginViewState extends State<LoginView> {
                 style: TextStyle(fontSize: 15.sp, color: Colors.grey),
               ),
               SizedBox(height: 25.h),
-              Row(
-                children: [
-                  AppDropDown(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please select a country code';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(width: 10.w),
-                  Flexible(
-                    flex: 4,
-                    child: AppInput(
-                      keyboardType: TextInputType.number,
-                      hintText: 'Phone Number',
-                      labelText: 'Enter Your number',
-                      controller: phoneController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter value';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
+
+              AppInput(
+                withCountryCode: true,
+                keyboardType: TextInputType.number,
+                hintText: 'Phone Number',
+                labelText: 'Enter Your number',
+                controller: phoneController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter value';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 18.h),
               AppInput(

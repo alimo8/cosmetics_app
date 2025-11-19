@@ -52,32 +52,18 @@ class _RegisterViewState extends State<RegisterView> {
                 },
               ),
               SizedBox(height: 16.h),
-              Row(
-                children: [
-                  AppDropDown(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please select a country code';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(width: 10.w),
-                  Flexible(
-                    flex: 4,
-                    child: AppInput(
-                      hintText: 'Enter Phone Number',
-                      labelText: 'Phone Number',
-                      controller: phoneController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter value';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
+
+              AppInput(
+                withCountryCode: true,
+                hintText: 'Enter Phone Number',
+                labelText: 'Phone Number',
+                controller: phoneController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter value';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 16.h),
 
