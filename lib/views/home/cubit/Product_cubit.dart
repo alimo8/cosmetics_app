@@ -1,11 +1,10 @@
-// ignore: file_names
 import 'package:cosmetics/views/home/model/product_model.dart';
 import 'package:cosmetics/views/home/repo/most_ordered_repo.dart';
 import 'package:cosmetics/views/home/repo/top_rated_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'Product_state.dart';
+part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
   ProductCubit() : super(ProductInitial());
