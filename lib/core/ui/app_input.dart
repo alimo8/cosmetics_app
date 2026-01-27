@@ -14,15 +14,19 @@ class AppInput extends StatefulWidget {
     this.keyboardType,
     this.radius,
     this.withCountryCode = false,
+    this.onCountryCodeChanged,
   });
+
   final String? labelText;
   final String? hintText;
   final Widget? suffixIcon;
-  final bool isPassword, withCountryCode;
+  final bool isPassword;
+  final bool withCountryCode;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final double? radius;
+  final ValueChanged<String>? onCountryCodeChanged;
 
   @override
   State<AppInput> createState() => _AppInputState();
@@ -30,13 +34,16 @@ class AppInput extends StatefulWidget {
 
 class _AppInputState extends State<AppInput> {
   bool isShown = true;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        if (widget.withCountryCode == true) AppCountryCode(),
+        if (widget.withCountryCode)
+          AppCountryCode(onCountryCodeChanged: widget.onCountryCodeChanged),
         Expanded(
           child: TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: widget.keyboardType,
             validator: widget.validator,
             textInputAction: TextInputAction.next,
@@ -44,22 +51,22 @@ class _AppInputState extends State<AppInput> {
             obscureText: widget.isPassword && isShown,
             decoration: InputDecoration(
               labelText: widget.labelText,
-              labelStyle: TextStyle(color: Colors.grey),
+              labelStyle: const TextStyle(color: Colors.grey),
               hintText: widget.hintText,
-              hintStyle: TextStyle(color: Colors.grey),
+              hintStyle: const TextStyle(color: Colors.grey),
               suffixIcon: widget.isPassword
                   ? IconButton(
                       focusNode: FocusNode(skipTraversal: true),
                       onPressed: () {
-                        isShown = !isShown;
-                        setState(() {});
+                        setState(() {
+                          isShown = !isShown;
+                        });
                       },
                       icon: AppImage(
                         imageUrl: 'eye_${isShown ? "off" : "on"}.svg',
                       ),
-                      //  Icon(isShown ? AppImages(imageUrl: imageUrl) : Icons.visibility),
                     )
-                  : null,
+                  : widget.suffixIcon,
               enabledBorder: border,
               focusedBorder: border,
               errorBorder: border,
@@ -73,7 +80,7 @@ class _AppInputState extends State<AppInput> {
   OutlineInputBorder? get border {
     if (widget.radius == null) return null;
     return OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.grey),
+      borderSide: const BorderSide(color: Colors.grey),
       borderRadius: BorderRadius.circular(widget.radius!),
     );
   }

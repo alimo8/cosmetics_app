@@ -1,7 +1,6 @@
 class ApiEndpoints {
-  static const String baseUrl =
-      'https://cosmatics-302b5-default-rtdb.europe-west1.firebasedatabase.app/';
-  static const String categories = 'categories.json';
+  static const String baseUrl = 'http://www.cosmatics.growfet.com';
+  static const String sliders = '/api/Sliders';
   static const String mostOrdered = 'products/most_ordered.json';
-  static const String topRated = 'products/top_rated.json';
+  static const String products = '//api/Products';
 }

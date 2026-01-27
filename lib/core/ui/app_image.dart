@@ -22,6 +22,7 @@ class AppImage extends StatelessWidget {
     if (imageUrl.toLowerCase().endsWith('svg')) {
       return SvgPicture.asset(
         errorBuilder: (context, error, stackTrace) =>
+            // Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
             Icon(Icons.error_outline, color: Colors.red),
         'assets/icons/$imageUrl',
         height: height,
@@ -38,7 +39,7 @@ class AppImage extends StatelessWidget {
         width: width,
         fit: fit ?? BoxFit.contain,
         errorBuilder: (context, error, stackTrace) =>
-            Icon(Icons.error_outline, color: Colors.red),
+            Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
       );
     } else if (imageUrl.toLowerCase().endsWith('json')) {
       return LottieBuilder.asset(
@@ -47,7 +48,7 @@ class AppImage extends StatelessWidget {
         width: width,
         fit: fit ?? BoxFit.contain,
         errorBuilder: (context, error, stackTrace) =>
-            Icon(Icons.error_outline, color: Colors.red),
+            Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
       );
     }
 
@@ -57,7 +58,7 @@ class AppImage extends StatelessWidget {
       width: width,
       fit: fit ?? BoxFit.contain,
       errorBuilder: (context, error, stackTrace) =>
-          Icon(Icons.error_outline, color: Colors.red),
+          Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
     );
   }
 }

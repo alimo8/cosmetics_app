@@ -1,4 +1,7 @@
+import 'package:cosmetics/core/logic/cach_helper.dart';
+import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
+import 'package:cosmetics/views/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,6 +44,8 @@ class PersonalPage extends StatelessWidget {
                   _Item(urlIcon: 'wallet.svg', title: 'Wallet'),
                   _Item(urlIcon: 'setting.svg', title: 'Settings'),
                   _Item(urlIcon: 'order_history.svg', title: 'Voucher '),
+                  _Item(urlIcon: 'order_history.svg', title: 'Voucher '),
+                  _Item(urlIcon: 'logout.svg', title: 'Logout', isLogout: true),
                 ],
               ),
               SizedBox(height: 160.h),
@@ -53,37 +58,58 @@ class PersonalPage extends StatelessWidget {
 }
 
 class _Item extends StatelessWidget {
-  const _Item({required this.urlIcon, required this.title});
+  const _Item({
+    required this.urlIcon,
+    required this.title,
+    this.isLogout = false,
+  });
+
   final String urlIcon;
   final String title;
+  final bool isLogout;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(8.r),
-      child: Row(
-        children: [
-          AppImage(imageUrl: urlIcon, width: 18.w, height: 18.h),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 140.sp,
-                fontWeight: FontWeight.w600,
-                color: Color(0xff434C6D),
+      child: InkWell(
+        onTap: () async {
+          if (isLogout) {
+            await CacheHelper.clear();
+            goTo(LoginView(), canPop: false);
+          }
+        },
+        child: Row(
+          children: [
+            AppImage(imageUrl: urlIcon, width: 18.w, height: 18.h),
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600,
+                  color: isLogout ? Colors.red : const Color(0xff434C6D),
+                ),
               ),
             ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: AppImage(
-              imageUrl: 'arrow_right.svg',
-              width: 24.w,
-              height: 24.h,
+            IconButton(
+              onPressed: () async {
+                if (isLogout) {
+                  await CacheHelper.clear();
+                  goTo(LoginView(), canPop: false);
+                }
+              },
+              icon: !isLogout
+                  ? AppImage(
+                      imageUrl: 'arrow_right.svg',
+                      width: 24.w,
+                      height: 24.h,
+                    )
+                  : SizedBox.shrink(),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_back.dart';
+import 'package:cosmetics/core/ui/app_country_code.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
-import 'package:cosmetics/core/ui/app_drop_down.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/views/auth/verify.dart';
 import 'package:flutter/material.dart';
@@ -46,14 +46,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               SizedBox(height: 100.h),
               Row(
                 children: [
-                  AppDropDown(
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please select a country code';
-                      }
-                      return null;
-                    },
-                  ),
+                  AppCountryCode(),
                   SizedBox(width: 10.h),
                   Flexible(
                     flex: 4,

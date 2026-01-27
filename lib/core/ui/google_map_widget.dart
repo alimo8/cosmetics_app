@@ -52,6 +52,7 @@ class _MapSampleState extends State<GoogleMapWidget> {
         title: 'Market 1',
         snippet: 'Market 1 snippet',
       ),
+      // ignore: deprecated_member_use
       icon: BitmapDescriptor.fromBytes(markerIcon),
     );
 

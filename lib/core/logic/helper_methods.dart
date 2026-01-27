@@ -20,3 +20,15 @@ void goTo(Widget page, {bool canPop = true, int? delayInSeconds}) {
     action();
   }
 }
+
+void showMsg(String? msg, {bool isError = false}) {
+  if (msg != null && msg.isNotEmpty) {
+    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        backgroundColor: isError ? Colors.red : Colors.green,
+        duration: Duration(seconds: 3),
+      ),
+    );
+  }
+}

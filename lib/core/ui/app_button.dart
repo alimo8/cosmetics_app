@@ -8,17 +8,19 @@ class AppButton extends StatelessWidget {
     this.height,
     this.width,
     this.onPressed,
+    this.isLoading = false,
   });
   final Color? color;
   final String text;
   final double? height;
   final double? width;
   final VoidCallback? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? () {} : onPressed,
       style: FilledButton.styleFrom(
         backgroundColor: color,
         visualDensity: VisualDensity.compact,
@@ -27,7 +29,16 @@ class AppButton extends StatelessWidget {
           height ?? 55, // default: 55 height
         ),
       ),
-      child: Text(text),
+      child: isLoading
+          ? const SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: Colors.white,
+              ),
+            )
+          : Text(text),
     );
   }
 }

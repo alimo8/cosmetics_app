@@ -1,3 +1,4 @@
+import 'package:cosmetics/core/logic/cach_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
@@ -16,11 +17,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   int currentIndex = 0;
 
   goToLoginPage() {
+    CacheHelper.setIsNotFirstTime();
+
     goTo(LoginView(), canPop: false);
   }
 
   @override
   Widget build(BuildContext context) {
+    bool isLast = currentIndex == _list.length - 1;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -28,15 +32,16 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: TextButton(
-                  onPressed: () {
-                    goToLoginPage();
-                  },
-                  child: Text('Skip'),
+              if (!isLast)
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: TextButton(
+                    onPressed: () {
+                      goToLoginPage();
+                    },
+                    child: Text('Skip'),
+                  ),
                 ),
-              ),
               SizedBox(height: 40.h),
               AppImage(
                 imageUrl: _list[currentIndex].imageUrl,
@@ -56,8 +61,15 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 40.h),
-              currentIndex != 2
-                  ? Center(
+              currentIndex == _list.length - 1
+                  ? AppButton(
+                      onPressed: () {
+                        goToLoginPage();
+                      },
+                      text: 'let’s start!',
+                      color: Color(0xff434C6D),
+                    )
+                  : Center(
                       child: FloatingActionButton(
                         backgroundColor: Color(0xff434C6D),
                         onPressed: () {
@@ -66,13 +78,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         },
                         child: AppImage(imageUrl: 'click.svg'),
                       ),
-                    )
-                  : AppButton(
-                      onPressed: () {
-                        goToLoginPage();
-                      },
-                      text: 'let’s start!',
-                      color: Color(0xff434C6D),
                     ),
             ],
           ),
