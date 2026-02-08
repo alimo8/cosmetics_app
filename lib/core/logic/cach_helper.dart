@@ -24,8 +24,36 @@ class CacheHelper {
     return _prefs.getString('email') ?? '';
   }
 
+  static String get image {
+    var image = _prefs.getString('profilePhotoUrl');
+    if (image == null || image.isEmpty) {
+      return 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png';
+    }
+    return image;
+  }
+
+  static String get name {
+    return _prefs.getString('username') ?? 'User';
+  }
+
   static bool get isAuth {
-    return (_prefs.getString('token') ?? '').isNotEmpty;
+    return token.isNotEmpty;
+  }
+
+  static String get token {
+    return _prefs.getString('token') ?? '';
+  }
+
+  static Future<void> logout() async {
+    // await _prefs.clear();
+    await _prefs.remove('token');
+    await _prefs.remove('email');
+    await _prefs.remove('countryCode');
+    await _prefs.remove('phoneNumber');
+    await _prefs.remove('role');
+    await _prefs.remove('username');
+    await _prefs.remove('profilePhotoUrl');
+    await _prefs.remove('id');
   }
 
   static Future<void> saveUserData(UserData model) async {
@@ -35,7 +63,7 @@ class CacheHelper {
     await _prefs.setString('phoneNumber', model.user.phoneNumber);
     await _prefs.setString('role', model.user.role);
     await _prefs.setString('username', model.user.username);
-    await _prefs.setString('profilePhotoUrl', model.user.profilePhotoUrl);
+    await _prefs.setString('profilePhotoUrl', model.user.profilePhotoUrl ?? '');
     await _prefs.setInt('id', model.user.id);
   }
 

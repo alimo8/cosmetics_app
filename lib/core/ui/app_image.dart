@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 
@@ -10,55 +11,64 @@ class AppImage extends StatelessWidget {
     this.width,
     this.fit,
     this.color,
+    this.isCircle = false,
   });
   final String imageUrl;
   final BoxFit? fit;
   final double? height;
   final double? width;
   final Color? color;
+  final bool isCircle;
 
   @override
   Widget build(BuildContext context) {
-    if (imageUrl.toLowerCase().endsWith('svg')) {
-      return SvgPicture.asset(
-        errorBuilder: (context, error, stackTrace) =>
-            // Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
-            Icon(Icons.error_outline, color: Colors.red),
-        'assets/icons/$imageUrl',
-        height: height,
-        width: width,
-        fit: fit ?? BoxFit.contain,
-        colorFilter: color != null
-            ? ColorFilter.mode(color!, BlendMode.srcIn)
-            : null,
-      );
-    } else if (imageUrl.startsWith('http')) {
-      return Image.network(
-        imageUrl,
-        height: height,
-        width: width,
-        fit: fit ?? BoxFit.contain,
-        errorBuilder: (context, error, stackTrace) =>
-            Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
-      );
-    } else if (imageUrl.toLowerCase().endsWith('json')) {
-      return LottieBuilder.asset(
-        'assets/lotties/$imageUrl',
-        height: height,
-        width: width,
-        fit: fit ?? BoxFit.contain,
-        errorBuilder: (context, error, stackTrace) =>
-            Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
-      );
-    }
-
-    return Image.asset(
-      'assets/images/$imageUrl',
-      height: height,
-      width: width,
-      fit: fit ?? BoxFit.contain,
-      errorBuilder: (context, error, stackTrace) =>
-          Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
+    return Builder(
+      builder: (context) {
+        Widget child;
+        if (imageUrl.toLowerCase().endsWith('svg')) {
+          child = SvgPicture.asset(
+            errorBuilder: (context, error, stackTrace) =>
+                // Image.asset('assets/images/not_found.png', fit: BoxFit.cover),
+                Icon(Icons.error_outline, color: Colors.red),
+            'assets/icons/$imageUrl',
+            height: height,
+            width: width,
+            fit: fit ?? BoxFit.contain,
+            colorFilter: color != null
+                ? ColorFilter.mode(color!, BlendMode.srcIn)
+                : null,
+          );
+        } else if (imageUrl.startsWith('http')) {
+          child = Image.network(
+            imageUrl,
+            height: height,
+            width: width,
+            fit: fit ?? BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) =>
+                Image.asset('assets/images/not_found.jpg', fit: BoxFit.cover),
+          );
+        } else if (imageUrl.toLowerCase().endsWith('json')) {
+          child = LottieBuilder.asset(
+            'assets/lotties/$imageUrl',
+            height: height,
+            width: width,
+            fit: fit ?? BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) =>
+                Image.asset('assets/images/not_found.jpg', fit: BoxFit.cover),
+          );
+        } else {
+          child = Image.asset(
+            'assets/images/$imageUrl',
+            height: height,
+            width: width,
+            fit: fit ?? BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) =>
+                Image.asset('assets/images/not_found.jpg', height: 50.h),
+          );
+        }
+        if (isCircle) return ClipOval(child: child);
+        return child;
+      },
     );
   }
 }

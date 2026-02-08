@@ -1,6 +1,6 @@
+import 'package:cosmetics/core/ui/app_back.dart';
 import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
-import 'package:cosmetics/core/ui/custom_arrow_back.dart';
 import 'package:cosmetics/core/ui/google_map_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,8 +12,7 @@ class CheckOutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: CustomArrowBack(),
-
+        leading: AppBack(paddingStart: 16.w),
         title: Text(
           'Checkout',
           style: TextStyle(
@@ -25,8 +24,6 @@ class CheckOutView extends StatelessWidget {
       ),
 
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(40.r)),
           color: const Color(0xff39D3DA).withValues(alpha: .11),
@@ -167,6 +164,7 @@ class CheckOutView extends StatelessWidget {
                 child: AppButton(
                   onPressed: () {},
                   text: 'ORDER',
+                  icon: 'order.svg',
                   color: Color(0xffDA498C),
                   width: 233.w,
                   height: 58.h,
@@ -205,7 +203,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+      padding: EdgeInsets.all(12.r),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: Colors.grey, width: 1.w),

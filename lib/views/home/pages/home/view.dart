@@ -16,8 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final CarouselSliderController buttonCarouselController =
-      CarouselSliderController();
+  final buttonCarouselController = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class _HomePageState extends State<HomePage> {
 
               ///  Sliders Section
               _Sliders(),
-              SizedBox(height: 10.h),
+              // SizedBox(height: 10.h),
 
               ///  Top Rated Products
               _buildSectionTitle('Top rated products'),

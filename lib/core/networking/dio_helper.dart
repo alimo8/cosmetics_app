@@ -1,71 +1,75 @@
-import 'dart:developer';
-
-import 'package:cosmetics/core/networking/api_endpoints.dart';
+import 'package:cosmetics/core/logic/cach_helper.dart';
+import 'package:cosmetics/core/logic/helper_methods.dart';
+import 'package:cosmetics/views/auth/login.dart';
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHelper {
-  static Dio? dio;
-  static initDio() {
-    dio ??= Dio(
-      BaseOptions(
-        baseUrl: ApiEndpoints.baseUrl,
-        receiveDataWhenStatusError: true,
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-      ),
-    );
-    dio!.interceptors.add(PrettyDioLogger());
-  }
+  static final _dio = Dio(
+    BaseOptions(
+      baseUrl: 'https://cosmatics.growfet.com',
+      receiveDataWhenStatusError: true,
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    ),
+  );
 
   static Future<CustomResponse> getRequest({
     required String endPoint,
     Map<String, dynamic>? queryParameters,
   }) async {
+    _dio.options.headers.addAll({
+      "Authorization": "Bearer ${CacheHelper.token}",
+    });
+
     try {
-      final response = await dio!.get(
+      final response = await _dio.get(
         endPoint,
         queryParameters: queryParameters,
       );
-      // print(response.data);
-      if (response.data != null) {
+      print(response.data);
+
+      if (response.statusCode == 200) {
         return CustomResponse(isSucces: true, data: response.data);
       }
-      return CustomResponse(isSucces: false);
+      return CustomResponse(isSucces: false, data: response.data);
     } on DioException catch (e) {
-      if (e.response?.data != null && e.response?.data is Map) {
-        log(e.response?.data['message']);
-        // print(e.response?.statusCode);
-      }
       return CustomResponse(isSucces: false, data: e.response?.data);
     }
   }
 
   static Future<CustomResponse> postRequest({
     required String endPoint,
-    required Map<String, dynamic> data,
+    Map<String, dynamic>? data,
   }) async {
+    _dio.options.headers.addAll({
+      "Authorization": "Bearer ${CacheHelper.token}",
+    });
     try {
-      final response = await dio!.post(endPoint, data: data);
-      // print(response.data);
-      // log(response.data);
+      final response = await _dio.post(endPoint, data: data);
+      print(response.data);
 
-      if (response.data != null) {
+      if (response.statusCode == 200) {
         return CustomResponse(isSucces: true, data: response.data);
       }
-      return CustomResponse(isSucces: false);
+      return CustomResponse(isSucces: false, data: response.data);
     } on DioException catch (e) {
-      return CustomResponse(isSucces: false, msg: e.response?.data['message']);
+      if (e.response?.statusCode == 401) {
+        CacheHelper.logout();
+        goTo(LoginView(), canPop: false);
+      }
+      return CustomResponse(isSucces: false, data: e.response?.data);
     }
   }
 }
 
 class CustomResponse {
   final bool isSucces;
-  final String? msg;
-  final dynamic data;
+  late final String? msg;
+  final data;
 
-  CustomResponse({required this.isSucces, this.msg, this.data});
+  CustomResponse({required this.isSucces, this.data}) {
+    msg = data is Map ? data['message'] : null;
+  }
 }

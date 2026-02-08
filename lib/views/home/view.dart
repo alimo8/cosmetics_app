@@ -1,9 +1,10 @@
 import 'package:cosmetics/core/ui/app_image.dart';
-import 'package:cosmetics/views/home/pages/cart.dart';
+import 'package:cosmetics/views/home/pages/cart/view.dart';
 import 'package:cosmetics/views/home/pages/categories/view.dart';
 import 'package:cosmetics/views/home/pages/home/view.dart';
-import 'package:cosmetics/views/home/pages/personal.dart';
+import 'package:cosmetics/views/home/pages/personal/view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -15,19 +16,19 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
   final _list = [
-    _Model(icons: 'home.svg', pages: HomePage()),
-    _Model(icons: 'categories.svg', pages: const CategoriesPage()),
-    _Model(icons: 'cart.svg', pages: const CartPage()),
-    _Model(icons: 'profile.svg', pages: const PersonalPage()),
+    _Model(icon: 'home.svg', page: HomePage()),
+    _Model(icon: 'categories.svg', page: const CategoriesPage()),
+    _Model(icon: 'cart.svg', page: const CartPage()),
+    _Model(icon: 'profile.svg', page: const ProfilPage()),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _list[currentIndex].pages,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
-        margin: EdgeInsets.symmetric(horizontal: 13),
+      body: _list[currentIndex].page,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.symmetric(horizontal: 13.h, vertical: 13.h),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
           color: Color(0xffD9D9D9),
@@ -58,7 +59,7 @@ class _HomeViewState extends State<HomeView> {
             _list.length,
             (index) => BottomNavigationBarItem(
               icon: AppImage(
-                imageUrl: _list[index].icons!,
+                imageUrl: _list[index].icon,
                 color: currentIndex == index
                     ? Theme.of(context).primaryColor
                     : null,
@@ -73,8 +74,8 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class _Model {
-  final String? icons;
-  final Widget? pages;
+  final String icon;
+  final Widget page;
 
-  _Model({required this.icons, required this.pages});
+  _Model({required this.icon, required this.page});
 }

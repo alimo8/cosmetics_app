@@ -1,6 +1,8 @@
 import 'package:cosmetics/core/logic/cach_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
-import 'package:cosmetics/core/networking/dio_helper.dart';
+import 'package:cosmetics/views/auth/login.dart';
+import 'package:cosmetics/views/check_out.dart';
+import 'package:cosmetics/views/home/view.dart';
 import 'package:cosmetics/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
-  DioHelper.initDio();
   runApp(const MyApp());
 }
 
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
         builder: (context) {
           return MaterialApp(
             theme: ThemeData(
+              textTheme: TextTheme(
+                bodyMedium: TextStyle(color: Color(0xff434C6D)),
+              ),
               fontFamily: 'Montserrat',
               scaffoldBackgroundColor: Color(0xffD9D9D9),
               colorScheme: ColorScheme.fromSeed(seedColor: Color(0xffD75D72)),
@@ -55,7 +59,7 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
-            home: SplashView(),
+            home: LoginView(),
           );
         },
       ),

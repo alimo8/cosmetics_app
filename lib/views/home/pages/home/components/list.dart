@@ -11,9 +11,7 @@ class __ListState extends State<_List> {
   List<ProductModel>? list;
   Future<void> productData() async {
     final response = await DioHelper.getRequest(endPoint: '/api/Products');
-    list = (response.data as List)
-        .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    list = ProductData.fromJson({'list': response.data}).list;
     setState(() {});
   }
 
@@ -44,21 +42,31 @@ class __ListState extends State<_List> {
   }
 }
 
+class ProductData {
+  late final List<ProductModel> list;
+  ProductData.fromJson(Map<String, dynamic> json) {
+    list = List.from(
+      json['list'] ?? [],
+    ).map((e) => ProductModel.fromJson(e)).toList();
+  }
+}
+
 class ProductModel {
-  late final String name, description;
-  late String imageUrl;
-  late final int id, stock;
+  late final int id;
+  late final String name;
+  late final String description;
   late final double price;
+  late final int stock;
+  late final String imageUrl;
+  late final int categoryId;
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? 0;
-    stock = json['stock'] ?? 0;
-    price = json['price'] ?? 0;
     name = json['name'] ?? '';
     description = json['description'] ?? '';
+    price = json['price'] ?? 0;
+    stock = json['stock'] ?? 0;
     imageUrl = json['imageUrl'] ?? '';
-    imageUrl = imageUrl.isEmpty
-        ? 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png'
-        : imageUrl;
+    categoryId = json['categoryId'] ?? 0;
   }
 }

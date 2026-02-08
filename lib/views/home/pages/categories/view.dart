@@ -18,9 +18,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
 
   Future<void> getCategoryData() async {
     final response = await DioHelper.getRequest(endPoint: '/api/Categories');
-    list = (response.data as List)
-        .map((e) => CategoriesModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    list = CategoriesData.fromJson({'list': response.data}).list;
     setState(() {});
   }
 
@@ -68,13 +66,24 @@ class _CategoriesPageState extends State<CategoriesPage> {
   }
 }
 
-class CategoriesModel {
-  final int id;
-  final String title;
-  final String imageUrl;
+class CategoriesData {
+  late final List<CategoriesModel> list;
 
-  CategoriesModel.fromJson(Map<String, dynamic> json)
-    : id = json['id'] ?? 0,
-      title = json['title'] ?? '',
-      imageUrl = json['imageUrl'] ?? '';
+  CategoriesData.fromJson(Map<String, dynamic> json) {
+    list = List.from(
+      json['list'],
+    ).map((e) => CategoriesModel.fromJson(e)).toList();
+  }
+}
+
+class CategoriesModel {
+  late final int id;
+  late final String title;
+  late final String imageUrl;
+
+  CategoriesModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'] ?? 0;
+    title = json['title'] ?? '';
+    imageUrl = json['imageUrl'] ?? '';
+  }
 }

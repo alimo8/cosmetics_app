@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cosmetics/core/logic/cach_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/networking/dio_helper.dart';
@@ -20,8 +22,8 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final formKey = GlobalKey<FormState>();
   String? selectedCountryCode;
-  final phoneController = TextEditingController();
-  final passwordController = TextEditingController();
+  final phoneController = TextEditingController(text: '01551713043');
+  final passwordController = TextEditingController(text: 'Password123');
   bool isLoginClicked = false;
 
   Future<bool> loginData() async {
@@ -169,21 +171,13 @@ class UserData {
 }
 
 class UserModel {
-  UserModel({
-    required this.id,
-    required this.username,
-    required this.email,
-    required this.phoneNumber,
-    required this.countryCode,
-    required this.role,
-  });
   late final int id;
   late final String username;
   late final String email;
   late final String phoneNumber;
   late final String countryCode;
   late final String role;
-  late final String profilePhotoUrl;
+  late final String? profilePhotoUrl;
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'] ?? 0;

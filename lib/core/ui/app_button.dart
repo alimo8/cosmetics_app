@@ -1,3 +1,4 @@
+import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
@@ -9,9 +10,11 @@ class AppButton extends StatelessWidget {
     this.width,
     this.onPressed,
     this.isLoading = false,
+    this.icon,
   });
   final Color? color;
   final String text;
+  final String? icon;
   final double? height;
   final double? width;
   final VoidCallback? onPressed;
@@ -19,17 +22,15 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
+    return FilledButton.icon(
+      icon: icon != null ? AppImage(imageUrl: icon!) : null,
       onPressed: isLoading ? () {} : onPressed,
       style: FilledButton.styleFrom(
         backgroundColor: color,
         visualDensity: VisualDensity.compact,
-        fixedSize: Size(
-          width ?? double.infinity, // default: full width
-          height ?? 55, // default: 55 height
-        ),
+        fixedSize: Size(width ?? double.infinity, height ?? 55),
       ),
-      child: isLoading
+      label: isLoading
           ? const SizedBox(
               height: 20,
               width: 20,
