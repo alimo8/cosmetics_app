@@ -8,8 +8,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 part 'components/item.dart';
 part 'components/header.dart';
 
-class ProfilPage extends StatelessWidget {
+class ProfilPage extends StatefulWidget {
   const ProfilPage({super.key});
+
+  @override
+  State<ProfilPage> createState() => _ProfilPageState();
+}
+
+class _ProfilPageState extends State<ProfilPage> {
+  Future<void> getData() async {
+    final response = await DioHelper.getRequest(endPoint: '/api/Auth/profile');
+    if (response.isSucces) {
+      final model = UserModel.fromJson(response.data);
+      await CacheHelper.saveUserData(model: model);
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {

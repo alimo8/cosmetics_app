@@ -7,7 +7,7 @@ import 'package:cosmetics/core/ui/app_image.dart';
 import 'package:cosmetics/core/ui/app_input.dart';
 import 'package:cosmetics/core/ui/app_button.dart';
 import 'package:cosmetics/core/ui/app_login_or_register.dart';
-import 'package:cosmetics/views/auth/reset_password.dart';
+import 'package:cosmetics/views/auth/forget_password.dart';
 import 'package:cosmetics/views/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +23,7 @@ class _LoginViewState extends State<LoginView> {
   final formKey = GlobalKey<FormState>();
   String? selectedCountryCode;
   final phoneController = TextEditingController(text: '01551713043');
-  final passwordController = TextEditingController(text: 'Password123');
+  final passwordController = TextEditingController(text: '123456789');
   bool isLoginClicked = false;
 
   Future<bool> loginData() async {
@@ -41,7 +41,8 @@ class _LoginViewState extends State<LoginView> {
     if (response.isSucces) {
       showMsg('Login Success');
       final model = UserData.fromJson(response.data);
-      await CacheHelper.saveUserData(model);
+      await CacheHelper.saveUserData(data: model);
+      CacheHelper.setToken(model.token);
       return true;
     } else {
       showMsg(response.msg, isError: true);
@@ -114,7 +115,7 @@ class _LoginViewState extends State<LoginView> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () => goTo(ResetPasswordView()),
+                    onPressed: () => goTo(ForgetPassword()),
                     child: Text(
                       'Forget Password?',
                       style: TextStyle(

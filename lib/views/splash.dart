@@ -21,7 +21,7 @@ class _SplashViewState extends State<SplashView> {
     goTo(
       CacheHelper.isFirstTime
           ? OnBoardingView()
-          : CacheHelper.isAuth
+          : (CacheHelper.toke.isNotEmpty && CacheHelper.toke != null)
           ? HomeView()
           : LoginView(),
       canPop: false,

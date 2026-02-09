@@ -35,6 +35,10 @@ class DioHelper {
       }
       return CustomResponse(isSucces: false, data: response.data);
     } on DioException catch (e) {
+      if (e.response?.statusCode == 401) {
+        CacheHelper.logout();
+        goTo(LoginView(), canPop: false);
+      }
       return CustomResponse(isSucces: false, data: e.response?.data);
     }
   }

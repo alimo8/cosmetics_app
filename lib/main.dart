@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
-            home: LoginView(),
+            home: SplashView(),
           );
         },
       ),

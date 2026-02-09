@@ -24,6 +24,14 @@ class CacheHelper {
     return _prefs.getString('email') ?? '';
   }
 
+  static String get toke {
+    return _prefs.getString('token') ?? '';
+  }
+
+  static Future<void> setToken(String token) async {
+    await _prefs.setString('token', token);
+  }
+
   static String get image {
     var image = _prefs.getString('profilePhotoUrl');
     if (image == null || image.isEmpty) {
@@ -56,15 +64,21 @@ class CacheHelper {
     await _prefs.remove('id');
   }
 
-  static Future<void> saveUserData(UserData model) async {
-    await _prefs.setString('token', model.token);
-    await _prefs.setString('email', model.user.email);
-    await _prefs.setString('countryCode', model.user.countryCode);
-    await _prefs.setString('phoneNumber', model.user.phoneNumber);
-    await _prefs.setString('role', model.user.role);
-    await _prefs.setString('username', model.user.username);
-    await _prefs.setString('profilePhotoUrl', model.user.profilePhotoUrl ?? '');
-    await _prefs.setInt('id', model.user.id);
+  static Future<void> saveUserData({UserData? data, UserModel? model}) async {
+    if (data == null && model == null) return;
+    if (data != null) {
+      await _prefs.setString('token', data.token);
+      model = data.user;
+    }
+    if (model != null) {
+      await _prefs.setString('email', model.email);
+      await _prefs.setString('countryCode', model.countryCode);
+      await _prefs.setString('phoneNumber', model.phoneNumber);
+      await _prefs.setString('role', model.role);
+      await _prefs.setString('username', model.username);
+      await _prefs.setString('profilePhotoUrl', model.profilePhotoUrl ?? '');
+      await _prefs.setInt('id', model.id);
+    }
   }
 
   static Future<void> clear() async {

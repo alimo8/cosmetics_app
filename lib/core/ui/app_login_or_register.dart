@@ -24,7 +24,7 @@ class _AppLoginOrRegisterState extends State<AppLoginOrRegister> {
             TextSpan(
               text: widget.isLogin
                   ? "Don’t have an account?"
-                  : "Already have an account ?",
+                  : "Have an account?",
               style: TextStyle(color: Colors.grey, fontSize: 18.sp),
             ),
             WidgetSpan(
