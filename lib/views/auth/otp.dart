@@ -56,18 +56,18 @@ class _OtpViewState extends State<OtpView> {
           builder: (_) => SuccessDialog(isFormRegister: true),
         );
       } else {
-        goTo(CreatePasswordView());
+        goTo(
+          CreatePasswordView(
+            isFromRegister: false,
+            phone: phoneNumber,
+            countryCode: countryCode,
+          ),
+        );
       }
     } else {
       showMsg(response.msg, isError: true);
     }
   }
-
-  // @override
-  // void dispose() {
-  //   otpController.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class _OtpViewState extends State<OtpView> {
                       text: 'We just sent a 4-digit verification code to ',
                     ),
                     TextSpan(
-                      text: '\n+20 1551713043.',
+                      text: '\n$countryCode $phoneNumber.',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xff434C6D),

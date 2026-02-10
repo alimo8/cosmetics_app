@@ -215,7 +215,6 @@ class _RegisterViewState extends State<RegisterView> {
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-
   String? selectedCountryCode;
   bool isLoading = false;
 
@@ -331,7 +330,7 @@ class _RegisterViewState extends State<RegisterView> {
                 height: 60.h,
                 width: 268.w,
                 onPressed: () async {
-                  if (!formKey.currentState!.validate()) return;
+                  if (formKey.currentState!.validate()) return;
                   setState(() => isLoading = true);
                   final success = await registerData();
                   setState(() => isLoading = false);

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cosmetics/core/logic/cach_helper.dart';
 import 'package:cosmetics/core/logic/helper_methods.dart';
 import 'package:cosmetics/core/networking/dio_helper.dart';
@@ -22,8 +20,8 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final formKey = GlobalKey<FormState>();
   String? selectedCountryCode;
-  final phoneController = TextEditingController(text: '01551713043');
-  final passwordController = TextEditingController(text: '123456789');
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
   bool isLoginClicked = false;
 
   Future<bool> loginData() async {
